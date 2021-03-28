@@ -1,16 +1,15 @@
 <template>
-  <MainView></MainView>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import MainView from './view/MainView.vue';
 export default {
   created() {
     this.$store.dispatch('GET_CITY_CORONA_LIST');
     this.$store.dispatch('GET_TOTAL_CORONA_LIST');
-  },
-  components: {
-    MainView,
+    this.$store.dispatch('GET_WORLD_CORONA_LIST');
   },
 };
 </script>
