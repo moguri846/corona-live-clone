@@ -1,4 +1,4 @@
-import { getCityCoronaList, getTotalCoronaList } from '../API/index.js';
+import { getCityCoronaList, getTotalCoronaList, getWorldCoronaList } from '../API/index.js';
 import { SET_CITY_CORONA_LIST, SET_TOTAL_CORONA_LIST } from './type.js';
 
 export default {
@@ -27,6 +27,13 @@ export default {
         const list = JSON.parse(data.body).response.body.items.item;
 
         commit(SET_TOTAL_CORONA_LIST, list);
+      })
+      .catch(err => console.log(err));
+  },
+  GET_WORLD_CORONA_LIST() {
+    getWorldCoronaList()
+      .then(({ data }) => {
+        console.log(data);
       })
       .catch(err => console.log(err));
   },
