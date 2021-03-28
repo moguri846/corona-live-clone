@@ -7,6 +7,7 @@ const port = 5000;
 
 const cityUrl = 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson';
 const totalUrl = 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson';
+const worldUrl = 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19NatInfStateJson';
 
 const now = new Date();
 let hour = now.getHours();
@@ -24,18 +25,26 @@ if (count) {
     count = false;
   } else if (hour === 10) {
     counte = true;
+  } else {
+    counte = false;
   }
 } else if (hour === 10) {
   counte = true;
+} else {
+  counte = false;
 }
 
+console.log(hour);
+
 const toDay = `${year}${month < 10 ? `0${month}` : `${month}`}${day < 10 ? `0${day}` : `${day}`}`;
+
+console.log(toDay);
 
 let queryParams = '?' + encodeURIComponent('ServiceKey') + `=${config.key}`; /* Service Key*/
 queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
 queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
-queryParams += '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(`${toDay}`); /* */
-queryParams += '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent(`${toDay}`); /* */
+queryParams += '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent('20210328'); /* */
+queryParams += '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent('20210328'); /* */
 
 app.get('/api/cityCorona', (req, res) => {
   request(
@@ -57,6 +66,23 @@ app.get('/api/totalCorona', (req, res) => {
   request(
     {
       url: totalUrl + queryParams,
+      method: 'GET',
+    },
+    function (error, response, body) {
+      if (error) {
+        return res.json({ success: false, err: error });
+      }
+      let result = body;
+      let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
+      return res.json({ success: true, body: xmlToJson });
+    },
+  );
+});
+
+app.get('/api/worldCorona', (req, res) => {
+  request(
+    {
+      url: worldUrl + queryParams,
       method: 'GET',
     },
     function (error, response, body) {
