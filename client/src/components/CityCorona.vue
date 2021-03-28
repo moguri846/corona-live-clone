@@ -6,7 +6,7 @@
     </div>
     <div class="item-list">
       <div class="description">
-        <div style="left: 28px">지역</div>
+        <div style="left: 30px">지역</div>
         <div style="left: 69px">오늘 확진자</div>
         <div style="left: 130px">총 확진자</div>
         <div style="left: 196px">총 사망자</div>
