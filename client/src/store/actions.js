@@ -1,5 +1,5 @@
 import { getCityCoronaList, getTotalCoronaList, getWorldCoronaList } from '../API/index.js';
-import { SET_CITY_CORONA_LIST, SET_TOTAL_CORONA_LIST } from './type.js';
+import { SET_CITY_CORONA_LIST, SET_TOTAL_CORONA_LIST, SET_WORLD_CORONA_LSIT } from './type.js';
 
 export default {
   GET_CITY_CORONA_LIST({ commit }) {
@@ -30,10 +30,22 @@ export default {
       })
       .catch(err => console.log(err));
   },
-  GET_WORLD_CORONA_LIST() {
+  GET_WORLD_CORONA_LIST({ commit }) {
     getWorldCoronaList()
       .then(({ data }) => {
-        console.log(data);
+        const arr = [];
+        const list = JSON.parse(data.body).response.body.items.item;
+        // 기타 제거
+        list.map(item => {
+          if (item.areaNm._text !== '기타') {
+            arr.push(item);
+          }
+        });
+        // 확진자 수 기준 내림차순으로 정렬
+        arr.sort((a, b) => {
+          return b.natDefCnt._text - a.natDefCnt._text;
+        });
+        commit(SET_WORLD_CORONA_LSIT, arr);
       })
       .catch(err => console.log(err));
   },

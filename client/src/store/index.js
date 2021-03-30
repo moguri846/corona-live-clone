@@ -10,6 +10,7 @@ export const store = new Vuex.Store({
   state: {
     cityCoronaList: [],
     totalCoronaList: [],
+    worldCoronaList: [],
   },
   actions,
   mutations,

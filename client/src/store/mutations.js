@@ -5,4 +5,7 @@ export default {
   SET_TOTAL_CORONA_LIST(state, list) {
     state.totalCoronaList = list;
   },
+  SET_WORLD_CORONA_LIST(state, list) {
+    state.worldCoronaList = list;
+  },
 };
