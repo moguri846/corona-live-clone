@@ -23,7 +23,7 @@
           <div>{{ item.deathCnt._text }}명</div>
           <div>{{ item.isolClearCnt._text }}명</div>
           <div>{{ item.qurRate._text }}명</div>
-          <div>></div>
+          <div><i class="fas fa-chevron-right"></i></div>
         </li>
       </ul>
     </div>
@@ -74,6 +74,8 @@ export default {
   overflow-y: hidden;
   overflow-x: scroll;
   padding: 10px;
+  padding-left: 0px;
+  padding-right: 20px;
 }
 .description {
   width: max-content;
@@ -123,5 +125,6 @@ export default {
 }
 .item:nth-child(even) > div {
   border: 1px solid #191f2c;
+  background-color: #191f2c;
 }
 </style>
