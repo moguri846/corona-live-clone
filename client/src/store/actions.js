@@ -1,5 +1,5 @@
-import { getCityCoronaList, getTotalCoronaList, getWorldCoronaList } from '../API/index.js';
-import { SET_CITY_CORONA_LIST, SET_TOTAL_CORONA_LIST, SET_WORLD_CORONA_LSIT } from './type.js';
+import { getCityCoronaList, getTotalCoronaList, getWorldCoronaList, getVaccinationInfo } from '../API/index.js';
+import { SET_CITY_CORONA_LIST, SET_TOTAL_CORONA_LIST, SET_WORLD_CORONA_LSIT, SET_VACCINATION_INFO } from './type.js';
 
 export default {
   GET_CITY_CORONA_LIST({ commit }) {
@@ -46,6 +46,13 @@ export default {
           return b.natDefCnt._text - a.natDefCnt._text;
         });
         commit(SET_WORLD_CORONA_LSIT, arr);
+      })
+      .catch(err => console.log(err));
+  },
+  GET_VACCINATION_INFO({ commit }) {
+    getVaccinationInfo()
+      .then(({ data }) => {
+        commit(SET_VACCINATION_INFO, data);
       })
       .catch(err => console.log(err));
   },

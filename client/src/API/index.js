@@ -9,11 +9,8 @@ const getTotalCoronaList = () => {
 const getWorldCoronaList = () => {
   return axios.get('/api/corona/worldCorona');
 };
-const getVaccineInfo = () => {
-  return axios
-    .get('/api/corona/vaccineInfo')
-    .then(response => console.log(response))
-    .catch(err => console.log(err));
+const getVaccinationInfo = () => {
+  return axios.get('/api/corona/vaccinationInfo');
 };
 
-export { getCityCoronaList, getTotalCoronaList, getWorldCoronaList, getVaccineInfo };
+export { getCityCoronaList, getTotalCoronaList, getWorldCoronaList, getVaccinationInfo };

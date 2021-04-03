@@ -3,7 +3,7 @@ const router = express.Router();
 const request = require('request');
 const convert = require('xml-js');
 const config = require('../config/key');
-// const url = require('../config/url');
+// const axios = require('axios');
 
 const baseUrl = 'http://openapi.data.go.kr/openapi/service/rest/Covid19';
 
@@ -96,25 +96,29 @@ router.get('/worldCorona', (req, res) => {
   );
 });
 
-router.get('/vaccineInfo', (req, res) => {
+router.get('/vaccinationInfo', (req, res) => {
   request(
     {
       url: 'https://nip.kdca.go.kr/irgd/cov19stats.do?list=all',
       method: 'GET',
     },
     function (error, response, body) {
-      // if (error) {
-      //   return res.json({ success: false, err: error });
-      // }
-      // let result = body;
-      // let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
-      // return res.json({ success: true, body: xmlToJson });
       if (error) {
         return res.json({ success: false, err: error });
       }
-      res.json({ success: true, response, body });
+      return res.json({ success: true, response, body });
     },
   );
+  // axios
+  //   .get('https://nip.kdca.go.kr/irgd/cov19stats.do?list=all')
+  //   .then((response) => {
+  //     console.log('true');
+  //     return res.json({ success: true, response });
+  //   })
+  //   .catch((err) => {
+  //     console.log('false');
+  //     return res.json({ success: false, err });
+  //   });
 });
 
 module.exports = router;

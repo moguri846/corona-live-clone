@@ -11,6 +11,7 @@ export const store = new Vuex.Store({
     cityCoronaList: [],
     totalCoronaList: [],
     worldCoronaList: [],
+    vaccinationInfo: [],
   },
   actions,
   mutations,
