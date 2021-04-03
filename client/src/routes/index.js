@@ -28,12 +28,12 @@ export const router = new VueRouter({
       component: VaccineView,
     },
     {
-      path: 'social-distancin',
-      name: 'social-distancin',
+      path: '/social-distancing',
+      name: 'social-distancing',
       component: SocialDistancingView,
     },
     {
-      path: 'faq',
+      path: '/faq',
       name: 'faq',
       component: FaqView,
     },
