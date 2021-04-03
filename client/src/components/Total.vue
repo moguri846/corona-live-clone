@@ -1,13 +1,11 @@
 <template>
   <div class="total">
-    <div>
-      <slot name="decide"></slot>
-      <slot name="death"></slot>
-      <slot name="clear"></slot>
-      <slot name="accExam"></slot>
-      <slot name="vaccine-1"></slot>
-      <slot name="vaccine-2"></slot>
-    </div>
+    <slot name="decide"></slot>
+    <slot name="death"></slot>
+    <slot name="clear"></slot>
+    <slot name="accExam"></slot>
+    <slot name="vaccine-1"></slot>
+    <slot name="vaccine-2"></slot>
   </div>
 </template>
 
@@ -17,23 +15,17 @@ export default {};
 
 <style scoped>
 .total {
-  width: 486px;
-  padding: 12px;
+  width: 470px;
+  display: flex;
+  margin: 0px;
+  padding: 20px;
   border: 1px solid #474b55;
   border-radius: 12px;
+  text-align: center;
   background-color: #191f2c;
   margin-bottom: 20px;
 }
-.total > div {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-}
-.total > div > div {
-  display: inline-block;
-  text-align: center;
-}
-.total > div > div > div:nth-child(2) {
+.total > div > div:nth-child(2) {
   font-weight: bold;
   padding: 5px;
 }
