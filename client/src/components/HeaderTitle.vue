@@ -1,0 +1,21 @@
+<template>
+  <div>
+    <slot name="title"></slot>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style scoped>
+.title {
+  width: 470px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #474b55;
+  background-color: #191f2c;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+</style>
