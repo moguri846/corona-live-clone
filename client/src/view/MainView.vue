@@ -1,7 +1,7 @@
 <template>
   <Common>
     <div slot="header" class="header">
-      <TotalCorona>
+      <Total>
         <div slot="decide" class="decide">
           <h3>확진자</h3>
           <div>{{ totalCoronaList.decideCnt._text }}</div>
@@ -22,8 +22,8 @@
           <div>{{ totalCoronaList.accExamCnt._text }}</div>
           <div>505</div>
         </div>
-      </TotalCorona>
-      <TodayCorona></TodayCorona>
+      </Total>
+      <Today></Today>
     </div>
     <div slot="content" class="content">
       <Chart></Chart>
@@ -37,20 +37,28 @@
 import { mapState } from 'vuex';
 
 import Common from './Common.vue';
-import TotalCorona from '../components/Total.vue';
-import TodayCorona from '../components/Today.vue';
+import Total from '../components/Total.vue';
+import Today from '../components/Today.vue';
 import Chart from '../components/Chart.vue';
 import AddChart from '../components/AddChart.vue';
 import CityCorona from '../components/CityCorona.vue';
 
 export default {
+  created() {
+    if (this.$store.state.cityCoronaList.length === 0) {
+      this.$store.dispatch('GET_CITY_CORONA_LIST');
+    }
+    if (this.$store.state.totalCoronaList.length === 0) {
+      this.$store.dispatch('GET_TOTAL_CORONA_LIST');
+    }
+  },
   computed: {
     ...mapState(['totalCoronaList']),
   },
   components: {
     Common,
-    TotalCorona,
-    TodayCorona,
+    Total,
+    Today,
     Chart,
     AddChart,
     CityCorona,
@@ -58,4 +66,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.total {
+  justify-content: space-between;
+}
+</style>

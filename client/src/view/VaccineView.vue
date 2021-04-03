@@ -33,7 +33,13 @@
 import Common from '../view/Common.vue';
 import Total from '../components/Total.vue';
 import Chart from '../components/Chart.vue';
+
 export default {
+  created() {
+    if (this.$store.state.vaccinationInfo.length === 0) {
+      this.$store.dispatch('GET_VACCINATION_INFO');
+    }
+  },
   components: {
     Common,
     Total,
@@ -62,5 +68,8 @@ export default {
   width: fit-content;
   line-height: 36px;
   padding: 0px 10px;
+}
+.total {
+  justify-content: space-evenly;
 }
 </style>

@@ -51,6 +51,11 @@ import Chart from '../components/Chart.vue';
 import AddChart from '../components/AddChart.vue';
 
 export default {
+  created() {
+    if (this.$store.state.worldCoronaList.length === 0) {
+      this.$store.dispatch('GET_WORLD_CORONA_LIST');
+    }
+  },
   data() {
     return {
       loading: false,
@@ -121,5 +126,8 @@ export default {
 }
 .item:nth-child(odd) > div {
   background-color: #272b38;
+}
+.total {
+  justify-content: space-evenly;
 }
 </style>
