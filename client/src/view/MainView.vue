@@ -4,29 +4,29 @@
       <Total>
         <div slot="decide" class="decide">
           <h3>확진자</h3>
-          <div>{{ totalCoronaList.decideCnt._text }}</div>
+          <div>{{ totalCoronaData.decideCnt._text }}</div>
           <div>505</div>
         </div>
         <div slot="death" class="death">
           <h3>사망자</h3>
-          <div>{{ totalCoronaList.deathCnt._text }}</div>
+          <div>{{ totalCoronaData.deathCnt._text }}</div>
           <div>505</div>
         </div>
         <div slot="clear" class="clear">
           <h3>완치자</h3>
-          <div>{{ totalCoronaList.clearCnt._text }}</div>
+          <div>{{ totalCoronaData.clearCnt._text }}</div>
           <div>505</div>
         </div>
         <div slot="accExam" class="accExam">
           <h3>검사자</h3>
-          <div>{{ totalCoronaList.accExamCnt._text }}</div>
+          <div>{{ totalCoronaData.accExamCnt._text }}</div>
           <div>505</div>
         </div>
       </Total>
       <Today></Today>
     </div>
     <div slot="content" class="content">
-      <Chart></Chart>
+      <Chart :chartData="aWeekAgoCoronaData"></Chart>
       <AddChart></AddChart>
       <CityCorona></CityCorona>
     </div>
@@ -48,12 +48,21 @@ export default {
     if (this.$store.state.cityCoronaList.length === 0) {
       this.$store.dispatch('GET_CITY_CORONA_LIST');
     }
-    if (this.$store.state.totalCoronaList.length === 0) {
-      this.$store.dispatch('GET_TOTAL_CORONA_LIST');
+    if (this.$store.state.totalCoronaData.length === 0) {
+      this.$store.dispatch('GET_TOTAL_CORONA_DATA');
+    }
+    if (this.$store.state.aWeekAgoCoronaData.length === 0) {
+      this.$store.dispatch('GET_A_WEEK_AGO_CORONA_DATA');
     }
   },
+  data() {
+    return {
+      aWeekAgoCorona: [],
+    };
+  },
+
   computed: {
-    ...mapState(['totalCoronaList']),
+    ...mapState(['totalCoronaData', 'aWeekAgoCoronaData']),
   },
   components: {
     Common,
@@ -67,6 +76,11 @@ export default {
 </script>
 
 <style scoped>
+.content > div:nth-child(1) {
+  border: 1px solid #474b55;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
 .total {
   justify-content: space-between;
 }
