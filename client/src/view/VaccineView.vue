@@ -15,7 +15,6 @@
       </Total>
     </div>
     <div slot="content" class="content">
-      <Chart></Chart>
       <div class="vaccine">
         <div class="type-of-vaccine">
           <div>화이자</div>
@@ -32,7 +31,6 @@
 <script>
 import Common from '../view/Common.vue';
 import Total from '../components/Total.vue';
-import Chart from '../components/Chart.vue';
 
 export default {
   created() {
@@ -43,7 +41,6 @@ export default {
   components: {
     Common,
     Total,
-    Chart,
   },
 };
 </script>

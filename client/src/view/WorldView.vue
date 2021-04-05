@@ -16,7 +16,6 @@
       <Today></Today>
     </div>
     <div slot="content" class="content">
-      <Chart></Chart>
       <AddChart></AddChart>
       <div class="item-list">
         <div class="description">
@@ -47,7 +46,6 @@ import ClipSpinner from 'vue-spinner/src/ClipLoader';
 import Common from './Common.vue';
 import Total from '../components/Total.vue';
 import Today from '../components/Today.vue';
-import Chart from '../components/Chart.vue';
 import AddChart from '../components/AddChart.vue';
 
 export default {
@@ -84,7 +82,6 @@ export default {
     Common,
     Total,
     Today,
-    Chart,
     AddChart,
     ClipSpinner,
   },
