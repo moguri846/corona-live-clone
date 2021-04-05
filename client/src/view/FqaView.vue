@@ -32,4 +32,7 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+.router-link-active {
+  padding: 0px;
+}
 </style>
