@@ -40,16 +40,22 @@ const toDay = `${year}${month < 10 ? `0${month}` : `${month}`}${day < 10 ? `0${d
 
 console.log(toDay);
 
+let BaseQueryParams = '?' + encodeURIComponent('ServiceKey') + `=${config.key}`; /* Service Key*/
+BaseQueryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
+BaseQueryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
+BaseQueryParams += '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(`${toDay}`); /* */
+BaseQueryParams += '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent(`${toDay}`); /* */
+
 let queryParams = '?' + encodeURIComponent('ServiceKey') + `=${config.key}`; /* Service Key*/
 queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
 queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
-queryParams += '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(`${toDay}`); /* */
+queryParams += '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent('20210330'); /* */
 queryParams += '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent(`${toDay}`); /* */
 
 router.get('/cityCorona', (req, res) => {
   request(
     {
-      url: cityUrl + queryParams,
+      url: cityUrl + BaseQueryParams,
       method: 'GET',
     },
     function (error, response, body) {
@@ -65,7 +71,7 @@ router.get('/cityCorona', (req, res) => {
 router.get('/totalCorona', (req, res) => {
   request(
     {
-      url: totalUrl + queryParams,
+      url: totalUrl + BaseQueryParams,
       method: 'GET',
     },
     function (error, response, body) {
@@ -82,7 +88,7 @@ router.get('/totalCorona', (req, res) => {
 router.get('/worldCorona', (req, res) => {
   request(
     {
-      url: worldUrl + queryParams,
+      url: worldUrl + BaseQueryParams,
       method: 'GET',
     },
     function (error, response, body) {
@@ -119,6 +125,23 @@ router.get('/vaccinationInfo', (req, res) => {
   //     console.log('false');
   //     return res.json({ success: false, err });
   //   });
+});
+
+router.get('/WeekAgoCoronaData', (req, res) => {
+  request(
+    {
+      url: cityUrl + queryParams,
+      method: 'GET',
+    },
+    function (error, response, body) {
+      if (error) {
+        return res.json({ success: false, err: error });
+      }
+      let result = body;
+      let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
+      return res.json({ success: true, body: xmlToJson });
+    },
+  );
 });
 
 module.exports = router;

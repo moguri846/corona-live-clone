@@ -1,5 +1,17 @@
-import { getCityCoronaList, getTotalCoronaList, getWorldCoronaList, getVaccinationInfo } from '../API/index.js';
-import { SET_CITY_CORONA_LIST, SET_TOTAL_CORONA_LIST, SET_WORLD_CORONA_LSIT, SET_VACCINATION_INFO } from './type.js';
+import {
+  getCityCoronaList,
+  getTotalCoronaData,
+  getWorldCoronaList,
+  getVaccinationInfo,
+  getAWeekAgoCoronaData,
+} from '../API/index.js';
+import {
+  SET_CITY_CORONA_LIST,
+  SET_TOTAL_CORONA_DATA,
+  SET_WORLD_CORONA_LSIT,
+  SET_VACCINATION_INFO,
+  SET_A_WEEK_AGO_CORONA_DATA,
+} from './type.js';
 
 export default {
   GET_CITY_CORONA_LIST({ commit }) {
@@ -21,12 +33,12 @@ export default {
       })
       .catch(err => console.log(err));
   },
-  GET_TOTAL_CORONA_LIST({ commit }) {
-    getTotalCoronaList()
+  GET_TOTAL_CORONA_DATA({ commit }) {
+    getTotalCoronaData()
       .then(({ data }) => {
         const list = JSON.parse(data.body).response.body.items.item;
 
-        commit(SET_TOTAL_CORONA_LIST, list);
+        commit(SET_TOTAL_CORONA_DATA, list);
       })
       .catch(err => console.log(err));
   },
@@ -53,6 +65,22 @@ export default {
     getVaccinationInfo()
       .then(({ data }) => {
         commit(SET_VACCINATION_INFO, data);
+      })
+      .catch(err => console.log(err));
+  },
+  GET_A_WEEK_AGO_CORONA_DATA({ commit }) {
+    getAWeekAgoCoronaData()
+      .then(({ data }) => {
+        const arr = [];
+        const list = JSON.parse(data.body).response.body.items.item;
+
+        list.map(item => {
+          if (item.gubun._text === '합계') {
+            arr.push(item.incDec._text);
+          }
+        });
+
+        commit(SET_A_WEEK_AGO_CORONA_DATA, arr);
       })
       .catch(err => console.log(err));
   },
