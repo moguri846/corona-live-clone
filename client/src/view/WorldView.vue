@@ -1,14 +1,14 @@
 <template>
   <Common>
     <div slot="header" class="header">
-      <Total>
+      <Total :loading="loading">
         <div slot="decide" class="decide">
           <h3>확진자</h3>
           <div>00</div>
           <div>dd</div>
         </div>
         <div slot="death" class="death">
-          <h3>사망자</h3>
+          <h3>확진자</h3>
           <div>00</div>
           <div>dd</div>
         </div>
@@ -16,7 +16,6 @@
       <Today></Today>
     </div>
     <div slot="content" class="content">
-      <AddChart></AddChart>
       <div class="item-list">
         <div class="description">
           <div style="left: 35px">국가</div>
@@ -46,12 +45,19 @@ import ClipSpinner from 'vue-spinner/src/ClipLoader';
 import Common from './Common.vue';
 import Total from '../components/Total.vue';
 import Today from '../components/Today.vue';
-import AddChart from '../components/AddChart.vue';
 
 export default {
   created() {
     if (this.$store.state.worldCoronaList.length === 0) {
-      this.$store.dispatch('GET_WORLD_CORONA_LIST');
+      this.startSpinner();
+      this.$store
+        .dispatch('GET_WORLD_CORONA_LIST')
+        .then(() =>
+          setTimeout(() => {
+            this.endSpinner();
+          }, 1000),
+        )
+        .catch(err => console.log(err));
     }
   },
   data() {
@@ -64,17 +70,9 @@ export default {
       this.loading = true;
     },
     endSpinner() {
-      this.loading = true;
+      this.loading = false;
     },
   },
-  // created() {
-  //   bus.$on('startSpinner', this.startSpinner);
-  //   bus.$on('endSpinner', this.endSpinner);
-  // },
-  // beforeDestroy() {
-  //   bus.$off('startSpinner', this.startSpinner);
-  //   bus.$off('endSpinner', this.endSpinner);
-  // },
   computed: {
     ...mapState(['worldCoronaList']),
   },
@@ -82,7 +80,6 @@ export default {
     Common,
     Total,
     Today,
-    AddChart,
     ClipSpinner,
   },
 };

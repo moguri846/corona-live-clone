@@ -1,7 +1,7 @@
 <template>
   <Common>
     <div slot="header" class="header">
-      <Total>
+      <Total :loading="loading">
         <div slot="vaccine-1">
           <h3>1차 접종</h3>
           <div>0</div>
@@ -35,8 +35,29 @@ import Total from '../components/Total.vue';
 export default {
   created() {
     if (this.$store.state.vaccinationInfo.length === 0) {
-      this.$store.dispatch('GET_VACCINATION_INFO');
+      this.startSpinner();
+      this.$store
+        .dispatch('GET_VACCINATION_INFO')
+        .then(() => {
+          setTimeout(() => {
+            this.endSpinner();
+          }, 1000);
+        })
+        .cacth(err => console.log(err));
     }
+  },
+  data() {
+    return {
+      loading: false,
+    };
+  },
+  methods: {
+    startSpinner() {
+      this.loading = true;
+    },
+    endSpinner() {
+      this.loading = false;
+    },
   },
   components: {
     Common,

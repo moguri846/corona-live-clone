@@ -1,16 +1,30 @@
 <template>
   <div class="total">
-    <slot name="decide"></slot>
-    <slot name="death"></slot>
-    <slot name="clear"></slot>
-    <slot name="accExam"></slot>
-    <slot name="vaccine-1"></slot>
-    <slot name="vaccine-2"></slot>
+    <template v-if="loading">
+      <PacmanSpinner></PacmanSpinner>
+    </template>
+    <template v-else>
+      <slot name="decide"></slot>
+      <slot name="death"></slot>
+      <slot name="clear"></slot>
+      <slot name="accExam"></slot>
+      <slot name="vaccine-1"></slot>
+      <slot name="vaccine-2"></slot>
+    </template>
   </div>
 </template>
 
 <script>
-export default {};
+import PacmanSpinner from 'vue-spinner/src/PacmanLoader';
+
+export default {
+  props: {
+    loading: Boolean,
+  },
+  components: {
+    PacmanSpinner,
+  },
+};
 </script>
 
 <style scoped>
@@ -80,5 +94,8 @@ h3 {
   margin: 0 auto;
   border-radius: 12px;
   padding: 0px 5px;
+}
+.v-spinner {
+  margin: 0 auto;
 }
 </style>

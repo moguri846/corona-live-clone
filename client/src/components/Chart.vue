@@ -1,6 +1,15 @@
 <script>
 import { Bar } from 'vue-chartjs';
 
+const now = new Date();
+const year = now.getFullYear();
+const month = now.getMonth() + 1;
+let day = now.getDate();
+
+const toDay = `${year}${month < 10 ? `0${month}` : `${month}`}${day < 10 ? `0${day}` : `${day}`}`;
+
+console.log(toDay);
+
 export default {
   extends: Bar,
   props: {
@@ -9,7 +18,7 @@ export default {
   data() {
     return {
       datacollection: {
-        labels: ['03/30', '03/31', '04/01', '04/02', '04/03', '04/04', '04/05'],
+        labels: ['04/02', '04/03', '04/04', '04/05', '04/06', '04/07', '04/08'],
         datasets: [
           {
             label: '하루 확진자',
@@ -46,6 +55,7 @@ export default {
               gridLines: {
                 display: false,
               },
+              barPercentage: 0.6,
             },
           ],
         },

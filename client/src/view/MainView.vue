@@ -1,7 +1,7 @@
 <template>
   <Common>
     <div slot="header" class="header">
-      <Total>
+      <Total :loading="loading">
         <div slot="decide" class="decide">
           <h3>확진자</h3>
           <div>{{ totalCoronaData.decideCnt._text }}</div>
@@ -26,15 +26,21 @@
       <Today></Today>
     </div>
     <div slot="content" class="content">
-      <Chart :chartData="aWeekAgoCoronaData"></Chart>
+      <template v-if="loading">
+        <ClipSpinner></ClipSpinner>
+      </template>
+      <template v-else>
+        <Chart :chartData="aWeekAgoCoronaData"></Chart>
+      </template>
       <AddChart></AddChart>
-      <CityCorona></CityCorona>
+      <CityCorona :loading="loading"></CityCorona>
     </div>
   </Common>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import ClipSpinner from 'vue-spinner/src/ClipLoader';
 
 import Common from './Common.vue';
 import Total from '../components/Total.vue';
@@ -46,23 +52,38 @@ import CityCorona from '../components/CityCorona.vue';
 export default {
   created() {
     if (this.$store.state.cityCoronaList.length === 0) {
+      this.startSpinner();
       this.$store.dispatch('GET_CITY_CORONA_LIST');
     }
     if (this.$store.state.totalCoronaData.length === 0) {
+      this.startSpinner();
       this.$store.dispatch('GET_TOTAL_CORONA_DATA');
     }
     if (this.$store.state.aWeekAgoCoronaData.length === 0) {
+      this.startSpinner();
       this.$store.dispatch('GET_A_WEEK_AGO_CORONA_DATA');
     }
+    setTimeout(() => {
+      this.endSpinner();
+    }, 1000);
   },
   data() {
     return {
+      loading: false,
       aWeekAgoCorona: [],
     };
   },
 
   computed: {
     ...mapState(['totalCoronaData', 'aWeekAgoCoronaData']),
+  },
+  methods: {
+    startSpinner() {
+      this.loading = true;
+    },
+    endSpinner() {
+      this.loading = false;
+    },
   },
   components: {
     Common,
@@ -71,6 +92,8 @@ export default {
     Chart,
     AddChart,
     CityCorona,
+    ClipSpinner,
+    // PacmanSpinner,
   },
 };
 </script>

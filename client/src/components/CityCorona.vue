@@ -1,40 +1,53 @@
 <template>
   <div class="city">
-    <div class="select-map">
-      <div class="map">지도</div>
-      <div class="city_city">지역별 표</div>
-    </div>
-    <div class="item-list">
-      <div class="description">
-        <div style="left: 30px">지역</div>
-        <div style="left: 69px">오늘 확진자</div>
-        <div style="left: 130px">총 확진자</div>
-        <div style="left: 196px">총 사망자</div>
-        <div style="left: 263px">총 완치자</div>
-        <div style="left: 350px">10만명당 확진자</div>
+    <template v-if="loading">
+      <ClipSpinner></ClipSpinner>
+    </template>
+    <template v-else>
+      <div class="select-map">
+        <div class="map">지도</div>
+        <div class="city_city">지역별 표</div>
       </div>
-      <ul>
-        <li v-for="(item, index) in cityCoronaList" :key="index" class="item">
-          <div>{{ item.gubun._text }}</div>
-          <div>ㅇ명</div>
-          <div>
-            {{ item.defCnt._text }}명<span>{{ item.incDec._text }}↑</span>
-          </div>
-          <div>{{ item.deathCnt._text }}명</div>
-          <div>{{ item.isolClearCnt._text }}명</div>
-          <div>{{ item.qurRate._text }}명</div>
-          <div><i class="fas fa-chevron-right"></i></div>
-        </li>
-      </ul>
-    </div>
+      <div class="item-list">
+        <div class="description">
+          <div style="left: 30px">지역</div>
+          <div style="left: 69px">오늘 확진자</div>
+          <div style="left: 130px">총 확진자</div>
+          <div style="left: 196px">총 사망자</div>
+          <div style="left: 263px">총 완치자</div>
+          <div style="left: 350px">10만명당 확진자</div>
+        </div>
+        <ul>
+          <li v-for="(item, index) in cityCoronaList" :key="index" class="item">
+            <div>{{ item.gubun._text }}</div>
+            <div>ㅇ명</div>
+            <div>
+              {{ item.defCnt._text }}명<span>{{ item.incDec._text }}↑</span>
+            </div>
+            <div>{{ item.deathCnt._text }}명</div>
+            <div>{{ item.isolClearCnt._text }}명</div>
+            <div>{{ item.qurRate._text }}명</div>
+            <div><i class="fas fa-chevron-right"></i></div>
+          </li>
+        </ul>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import ClipSpinner from 'vue-spinner/src/ClipLoader';
+
 export default {
+  props: {
+    loading: Boolean,
+  },
   computed: {
     ...mapState(['cityCoronaList']),
+  },
+  components: {
+    ClipSpinner,
   },
 };
 </script>
