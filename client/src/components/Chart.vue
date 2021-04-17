@@ -1,15 +1,6 @@
 <script>
 import { Bar } from 'vue-chartjs';
 
-const now = new Date();
-const year = now.getFullYear();
-const month = now.getMonth() + 1;
-let day = now.getDate();
-
-const toDay = `${year}${month < 10 ? `0${month}` : `${month}`}${day < 10 ? `0${day}` : `${day}`}`;
-
-console.log(toDay);
-
 export default {
   extends: Bar,
   props: {
@@ -18,7 +9,15 @@ export default {
   data() {
     return {
       datacollection: {
-        labels: ['04/02', '04/03', '04/04', '04/05', '04/06', '04/07', '04/08'],
+        labels: [
+          this.chartData[6] ? this.chartData[6].stdDay : '0',
+          this.chartData[5] ? this.chartData[5].stdDay : '0',
+          this.chartData[4] ? this.chartData[4].stdDay : '0',
+          this.chartData[3] ? this.chartData[3].stdDay : '0',
+          this.chartData[2] ? this.chartData[2].stdDay : '0',
+          this.chartData[1] ? this.chartData[1].stdDay : '0',
+          this.chartData[0] ? this.chartData[0].stdDay : '0',
+        ],
         datasets: [
           {
             label: '하루 확진자',
@@ -27,13 +26,13 @@ export default {
             borderWidth: 1,
             pointBorderColor: 'black',
             data: [
-              this.chartData[6] ? this.chartData[6] : '0',
-              this.chartData[5] ? this.chartData[5] : '0',
-              this.chartData[4] ? this.chartData[4] : '0',
-              this.chartData[3] ? this.chartData[3] : '0',
-              this.chartData[2] ? this.chartData[2] : '0',
-              this.chartData[1] ? this.chartData[1] : '0',
-              this.chartData[0] ? this.chartData[0] : '0',
+              this.chartData[6] ? this.chartData[6].incDec : '0',
+              this.chartData[5] ? this.chartData[5].incDec : '0',
+              this.chartData[4] ? this.chartData[4].incDec : '0',
+              this.chartData[3] ? this.chartData[3].incDec : '0',
+              this.chartData[2] ? this.chartData[2].incDec : '0',
+              this.chartData[1] ? this.chartData[1].incDec : '0',
+              this.chartData[0] ? this.chartData[0].incDec : '0',
             ],
           },
         ],

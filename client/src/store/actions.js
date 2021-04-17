@@ -9,7 +9,7 @@ import {
   SET_CITY_CORONA_LIST,
   SET_TOTAL_CORONA_DATA,
   SET_WORLD_CORONA_LSIT,
-  SET_VACCINATION_INFO,
+  // SET_VACCINATION_INFO,
   SET_A_WEEK_AGO_CORONA_DATA,
 } from './type.js';
 
@@ -61,10 +61,10 @@ export default {
       })
       .catch(err => console.log(err));
   },
-  GET_VACCINATION_INFO({ commit }) {
+  GET_VACCINATION_INFO() {
     getVaccinationInfo()
-      .then(({ data }) => {
-        commit(SET_VACCINATION_INFO, data);
+      .then(response => {
+        console.log(response);
       })
       .catch(err => console.log(err));
   },
@@ -76,7 +76,11 @@ export default {
 
         list.map(item => {
           if (item.gubun._text === '합계') {
-            arr.push(item.incDec._text);
+            const aweekCorona = {
+              incDec: item.incDec._text,
+              stdDay: item.stdDay._text.slice(7, 13),
+            };
+            arr.push(aweekCorona);
           }
         });
 
