@@ -4,11 +4,15 @@
       <Total :loading="loading">
         <div slot="decide" class="decide">
           <h3>확진자</h3>
+          <!-- <div>{{| makeComma }}</div>
+          <div>{{| makeComma }</div> -->
           <div>00</div>
           <div>dd</div>
         </div>
         <div slot="death" class="death">
           <h3>확진자</h3>
+          <!-- <div>{{| makeComma }}</div>
+          <div>{{| makeComma }</div> -->
           <div>00</div>
           <div>dd</div>
         </div>
@@ -26,10 +30,10 @@
         <ul class="list">
           <ClipSpinner v-if="loading"></ClipSpinner>
           <li v-for="(item, index) in worldCoronaList" :key="index" class="item">
-            <div>{{ item.nationNm._text }}</div>
-            <div>{{ item.natDefCnt._text }}</div>
-            <div>{{ item.natDeathCnt._text }}</div>
-            <div>{{ item.natDeathRate._text }}</div>
+            <div>{{ item.nationNm._text | makeComma }}</div>
+            <div>{{ item.natDefCnt._text | makeComma }}</div>
+            <div>{{ item.natDeathCnt._text | makeComma }}</div>
+            <div>{{ item.natDeathRate._text.slice(0, 4) }}</div>
           </li>
         </ul>
       </div>
@@ -108,8 +112,10 @@ export default {
 .item {
   display: flex;
   justify-content: space-around;
+  text-align: center;
 }
 .item > div {
+  box-sizing: border-box;
   width: 110px;
   padding: 16px;
   border-radius: 12px;

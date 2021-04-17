@@ -4,11 +4,15 @@
       <Total :loading="loading">
         <div slot="vaccine-1">
           <h3>1차 접종</h3>
+          <!-- <div>{{| makeComma }}</div>
+          <div>{{| makeComma }</div> -->
           <div>0</div>
           <div>0</div>
         </div>
         <div slot="vaccine-2">
           <h3>2차 접종</h3>
+          <!-- <div>{{| makeComma }}</div>
+          <div>{{| makeComma }</div> -->
           <div>0</div>
           <div>0</div>
         </div>

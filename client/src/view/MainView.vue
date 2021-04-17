@@ -47,7 +47,7 @@ import Total from '../components/Total.vue';
 import Today from '../components/Today.vue';
 import Chart from '../components/Chart.vue';
 import AddChart from '../components/AddChart.vue';
-import CityCorona from '../components/CityCorona.vue';
+import CityCorona from '../components/CoronaInfoList.vue';
 
 export default {
   created() {
