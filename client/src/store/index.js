@@ -9,10 +9,11 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     cityCoronaList: [],
-    totalCoronaData: [],
+    totalCoronaInfo: [],
     worldCoronaList: [],
     vaccinationInfo: [],
-    aWeekAgoCoronaData: [],
+    aWeekAgoCoronaInfo: [],
+    incDecCoronaInfo: [],
   },
   actions,
   mutations,

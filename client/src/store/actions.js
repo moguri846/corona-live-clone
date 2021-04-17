@@ -1,16 +1,18 @@
 import {
   getCityCoronaList,
-  getTotalCoronaData,
+  getTotalCoronaInfo,
   getWorldCoronaList,
   getVaccinationInfo,
-  getAWeekAgoCoronaData,
+  getAWeekAgoCoronaInfo,
+  getincDecCoronaInfo,
 } from '../API/index.js';
 import {
   SET_CITY_CORONA_LIST,
-  SET_TOTAL_CORONA_DATA,
+  SET_TOTAL_CORONA_INFO,
   SET_WORLD_CORONA_LSIT,
   // SET_VACCINATION_INFO,
-  SET_A_WEEK_AGO_CORONA_DATA,
+  SET_A_WEEK_AGO_CORONA_INFO,
+  SET_INC_DEC_CORONA_INFO,
 } from './type.js';
 
 export default {
@@ -33,12 +35,12 @@ export default {
       })
       .catch(err => console.log(err));
   },
-  GET_TOTAL_CORONA_DATA({ commit }) {
-    getTotalCoronaData()
+  GET_TOTAL_CORONA_INFO({ commit }) {
+    getTotalCoronaInfo()
       .then(({ data }) => {
         const list = JSON.parse(data.body).response.body.items.item;
 
-        commit(SET_TOTAL_CORONA_DATA, list);
+        commit(SET_TOTAL_CORONA_INFO, list);
       })
       .catch(err => console.log(err));
   },
@@ -68,8 +70,8 @@ export default {
       })
       .catch(err => console.log(err));
   },
-  GET_A_WEEK_AGO_CORONA_DATA({ commit }) {
-    getAWeekAgoCoronaData()
+  GET_A_WEEK_AGO_CORONA_INFO({ commit }) {
+    getAWeekAgoCoronaInfo()
       .then(({ data }) => {
         const arr = [];
         const list = JSON.parse(data.body).response.body.items.item;
@@ -84,8 +86,22 @@ export default {
           }
         });
 
-        commit(SET_A_WEEK_AGO_CORONA_DATA, arr);
+        commit(SET_A_WEEK_AGO_CORONA_INFO, arr);
       })
       .catch(err => console.log(err));
+  },
+  GET_INC_DEC_CORONA_INFO({ commit }) {
+    getincDecCoronaInfo().then(({ data }) => {
+      // const arr = [];
+      const list = JSON.parse(data.body).response.body.items.item;
+      console.log(list);
+      const incDecCoronaInfo = {
+        decide_cnt: Math.abs(list[0].decideCnt._text - list[1].decideCnt._text),
+        death_cnt: Math.abs(list[0].deathCnt._text - list[1].deathCnt._text),
+        clear_cnt: Math.abs(list[0].clearCnt._text - list[1].clearCnt._text),
+        exam_cnt: Math.abs(list[0].examCnt._text - list[1].examCnt._text),
+      };
+      commit(SET_INC_DEC_CORONA_INFO, incDecCoronaInfo);
+    });
   },
 };

@@ -4,23 +4,23 @@
       <Total :loading="loading">
         <div slot="decide" class="decide">
           <h3>확진자</h3>
-          <div>{{ totalCoronaData.decideCnt._text }}</div>
-          <div>505</div>
+          <div>{{ totalCoronaInfo.decideCnt._text | makeComma }}</div>
+          <div class="inc-dec">{{ (incDecCoronaInfo.decide_cnt + '↑') | makeComma }}</div>
         </div>
         <div slot="death" class="death">
           <h3>사망자</h3>
-          <div>{{ totalCoronaData.deathCnt._text }}</div>
-          <div>505</div>
+          <div>{{ totalCoronaInfo.deathCnt._text | makeComma }}</div>
+          <div class="inc-dec">{{ (incDecCoronaInfo.death_cnt + '↑') | makeComma }}</div>
         </div>
         <div slot="clear" class="clear">
-          <h3>완치자</h3>
-          <div>{{ totalCoronaData.clearCnt._text }}</div>
-          <div>505</div>
+          <h3>격리해제</h3>
+          <div>{{ totalCoronaInfo.clearCnt._text | makeComma }}</div>
+          <div class="inc-dec">{{ (incDecCoronaInfo.clear_cnt + '↑') | makeComma }}</div>
         </div>
-        <div slot="accExam" class="accExam">
-          <h3>검사자</h3>
-          <div>{{ totalCoronaData.accExamCnt._text }}</div>
-          <div>505</div>
+        <div slot="exam" class="exam">
+          <h3>검사중</h3>
+          <div>{{ totalCoronaInfo.examCnt._text | makeComma }}</div>
+          <div class="inc-dec">{{ (incDecCoronaInfo.exam_cnt + '↑') | makeComma }}</div>
         </div>
       </Total>
       <Today></Today>
@@ -30,7 +30,7 @@
         <ClipSpinner></ClipSpinner>
       </template>
       <template v-else>
-        <Chart :chartData="aWeekAgoCoronaData"></Chart>
+        <Chart :chartData="aWeekAgoCoronaInfo"></Chart>
       </template>
       <AddChart></AddChart>
       <CityCorona :loading="loading"></CityCorona>
@@ -55,13 +55,17 @@ export default {
       this.startSpinner();
       this.$store.dispatch('GET_CITY_CORONA_LIST');
     }
-    if (this.$store.state.totalCoronaData.length === 0) {
+    if (this.$store.state.totalCoronaInfo.length === 0) {
       this.startSpinner();
-      this.$store.dispatch('GET_TOTAL_CORONA_DATA');
+      this.$store.dispatch('GET_TOTAL_CORONA_INFO');
     }
-    if (this.$store.state.aWeekAgoCoronaData.length === 0) {
+    if (this.$store.state.aWeekAgoCoronaInfo.length === 0) {
       this.startSpinner();
-      this.$store.dispatch('GET_A_WEEK_AGO_CORONA_DATA');
+      this.$store.dispatch('GET_A_WEEK_AGO_CORONA_INFO');
+    }
+    if (this.$store.state.incDecCoronaInfo.length === 0) {
+      this.startSpinner();
+      this.$store.dispatch('GET_INC_DEC_CORONA_INFO');
     }
     setTimeout(() => {
       this.endSpinner();
@@ -70,12 +74,11 @@ export default {
   data() {
     return {
       loading: false,
-      aWeekAgoCorona: [],
     };
   },
 
   computed: {
-    ...mapState(['totalCoronaData', 'aWeekAgoCoronaData']),
+    ...mapState(['totalCoronaInfo', 'aWeekAgoCoronaInfo', 'incDecCoronaInfo']),
   },
   methods: {
     startSpinner() {
@@ -99,12 +102,15 @@ export default {
 </script>
 
 <style scoped>
+.total {
+  justify-content: space-between;
+}
 .content > div:nth-child(1) {
   border: 1px solid #474b55;
   border-radius: 12px;
   margin-bottom: 20px;
 }
-.total {
-  justify-content: space-between;
+.total > div > div:nth-child(3) {
+  padding: 3px 8px 3px 15px;
 }
 </style>
