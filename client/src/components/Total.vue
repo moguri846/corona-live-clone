@@ -7,7 +7,7 @@
       <slot name="decide"></slot>
       <slot name="death"></slot>
       <slot name="clear"></slot>
-      <slot name="accExam"></slot>
+      <slot name="exam"></slot>
       <slot name="vaccine-1"></slot>
       <slot name="vaccine-2"></slot>
     </template>
@@ -45,55 +45,44 @@ export default {
 }
 h3 {
   font-size: 12px;
-  opacity: 0.7;
+  color: white;
+  opacity: 0.9;
+}
+.total > div > div:nth-child(3) {
+  width: fit-content;
+  opacity: 0.9;
+  margin: 0 auto;
+  margin-top: 3px;
+  border-radius: 12px;
+  padding: 3px 15px;
 }
 .decide > div {
   color: #eb5374;
 }
 .decide > div:nth-child(3) {
   color: #eb5374;
-  width: fit-content;
   background-color: #262331;
-  opacity: 0.8;
-  margin: 0 auto;
-  border-radius: 12px;
-  padding: 0px 5px;
 }
 .death > div {
   color: #f0f8ff;
 }
 .death > div:nth-child(3) {
   color: #6b6d71;
-  width: fit-content;
   background-color: #242836;
-  opacity: 0.8;
-  margin: 0 auto;
-  border-radius: 12px;
-  padding: 0px 5px;
 }
 .clear > div {
   color: #188a17;
 }
 .clear > div:nth-child(3) {
   color: #188a17;
-  width: fit-content;
   background-color: #19282b;
-  opacity: 0.8;
-  margin: 0 auto;
-  border-radius: 12px;
-  padding: 0px 5px;
 }
-.accExam > div {
+.exam > div {
   color: #4173eb;
 }
-.accExam > div:nth-child(3) {
+.exam > div:nth-child(3) {
   color: #4173eb;
-  width: fit-content;
   background-color: #1d2438;
-  opacity: 0.8;
-  margin: 0 auto;
-  border-radius: 12px;
-  padding: 0px 5px;
 }
 .v-spinner {
   margin: 0 auto;
