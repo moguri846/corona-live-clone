@@ -8,8 +8,8 @@ export default {
   SET_WORLD_CORONA_LIST(state, list) {
     state.worldCoronaList = list;
   },
-  SET_VACCINATION_INFO(state, data) {
-    state.vaccinationInfo = data;
+  SET_TOTAL_VACCINATION_INFO(state, data) {
+    state.totalVaccinationInfo = data;
   },
   SET_A_WEEK_AGO_CORONA_INFO(state, data) {
     state.aWeekAgoCoronaInfo = data;

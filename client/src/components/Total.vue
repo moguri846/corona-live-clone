@@ -8,8 +8,8 @@
       <slot name="death"></slot>
       <slot name="clear"></slot>
       <slot name="exam"></slot>
-      <slot name="vaccine-1"></slot>
-      <slot name="vaccine-2"></slot>
+      <slot name="toDayVaccine"></slot>
+      <slot name="totalVaccine"></slot>
     </template>
   </div>
 </template>

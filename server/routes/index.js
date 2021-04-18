@@ -3,13 +3,14 @@ const router = express.Router();
 const request = require('request');
 const convert = require('xml-js');
 const config = require('../config/key');
-// const axios = require('axios');
+const axios = require('axios');
 
 const baseUrl = 'http://openapi.data.go.kr/openapi/service/rest/Covid19';
 
 const cityUrl = `${baseUrl}/getCovid19SidoInfStateJson`;
 const totalUrl = `${baseUrl}/getCovid19InfStateJson`;
 const worldUrl = `${baseUrl}/getCovid19NatInfStateJson`;
+const vaccine = 'https://nip.kdca.go.kr/irgd/cov19stats.do?list=all';
 
 const now = new Date();
 let hour = now.getHours();
@@ -26,14 +27,14 @@ if (count) {
     day = day - 1;
     count = false;
   } else if (hour === 10) {
-    counte = true;
+    count = true;
   } else {
-    counte = false;
+    count = false;
   }
 } else if (hour === 10) {
-  counte = true;
+  count = true;
 } else {
-  counte = false;
+  count = false;
 }
 
 const toDay = `${year}${month < 10 ? `0${month}` : `${month}`}${day < 10 ? `0${day}` : `${day}`}`;
@@ -102,12 +103,7 @@ router.get('/worldCoronaList', (req, res) => {
   request(
     {
       url:
-        worldUrl +
-        BaseQueryParams +
-        '&' +
-        encodeURIComponent('startCreateDt') +
-        '=' +
-        encodeURIComponent(`${toDay - 1}`),
+        worldUrl + BaseQueryParams + '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(`${toDay}`),
       method: 'GET',
     },
     function (error, response, body) {
@@ -138,33 +134,21 @@ router.get('/worldCoronaList', (req, res) => {
 });
 
 router.get('/vaccinationInfo', (req, res) => {
-  // 서비스 복구 html 코드 들어옴
-  // request(
-  //   {
-  //     url: 'https://nip.kdca.go.kr/irgd/cov19stats.do?list=all',
-  //     method: 'GET',
-  //   },
-  //   function (error, response, body) {
-  //     if (error) {
-  //       return res.json({ success: false, err: error });
-  //     }
-  //     console.log(body);
-  //     return res.json({ success: true, body });
-  //   },
-  // );
-  // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-  // 데이터 잘 들어오는데 클라한테 넘기면 오류남
-  // axios
-  //   .get('https://nip.kdca.go.kr/irgd/cov19stats.do?list=all')
-  //   .then((response) => {
-  //     console.log(response);
-  //     console.log('true');
-  //     return res.json({ success: true, response });
-  //   })
-  //   .catch((err) => {
-  //     console.log('false');
-  //     return res.json({ success: false, err });
-  //   });
+  axios
+    .get(vaccine)
+    .then((response) => {
+      let result = response.data;
+      let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
+
+      const list = JSON.parse(xmlToJson).response.body.items.item;
+
+      const totalVaccineInfo = {
+        toDayVaccine: { first: list[0].firstCnt._text, second: list[0].secondCnt._text },
+        totalVaccine: { first: list[2].firstCnt._text, second: list[2].secondCnt._text },
+      };
+      return res.json({ success: true, totalVaccineInfo });
+    })
+    .catch((err) => console.log(err));
 });
 
 router.get('/WeekAgoCoronaInfo', (req, res) => {

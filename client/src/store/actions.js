@@ -10,7 +10,7 @@ import {
   SET_CITY_CORONA_LIST,
   SET_TOTAL_CORONA_INFO,
   SET_WORLD_CORONA_LSIT,
-  // SET_VACCINATION_INFO,
+  SET_TOTAL_VACCINATION_INFO,
   SET_A_WEEK_AGO_CORONA_INFO,
   SET_INC_DEC_CORONA_INFO,
 } from './type.js';
@@ -37,10 +37,10 @@ export default {
       })
       .catch(err => console.log(err));
   },
-  GET_VACCINATION_INFO() {
+  GET_TOTAL_VACCINATION_INFO({ commit }) {
     getVaccinationInfo()
-      .then(response => {
-        console.log(response);
+      .then(({ data }) => {
+        commit(SET_TOTAL_VACCINATION_INFO, data.totalVaccineInfo);
       })
       .catch(err => console.log(err));
   },

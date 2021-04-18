@@ -2,19 +2,31 @@
   <Common>
     <div slot="header" class="header">
       <Total :loading="loading">
-        <div slot="vaccine-1">
-          <h3>1차 접종</h3>
-          <!-- <div>{{| makeComma }}</div>
-          <div>{{| makeComma }</div> -->
-          <div>0</div>
-          <div>0</div>
+        <div slot="toDayVaccine" class="toDayVaccine">
+          <h1>당일 접종</h1>
+          <div>
+            <div class="toDayVaccine-1">
+              <h3>1차 접종</h3>
+              {{ totalVaccinationInfo.toDayVaccine.first | makeComma }}
+            </div>
+            <div class="toDayVaccine-2">
+              <h3>2차 접종</h3>
+              {{ totalVaccinationInfo.toDayVaccine.second | makeComma }}
+            </div>
+          </div>
         </div>
-        <div slot="vaccine-2">
-          <h3>2차 접종</h3>
-          <!-- <div>{{| makeComma }}</div>
-          <div>{{| makeComma }</div> -->
-          <div>0</div>
-          <div>0</div>
+        <div slot="totalVaccine" class="totalVaccine">
+          <h1>누적 접종</h1>
+          <div>
+            <div class="totalVaccine-1">
+              <h3>1차 접종</h3>
+              {{ totalVaccinationInfo.totalVaccine.first | makeComma }}
+            </div>
+            <div class="totalVaccine-2">
+              <h3>2차 접종</h3>
+              {{ totalVaccinationInfo.totalVaccine.second | makeComma }}
+            </div>
+          </div>
         </div>
       </Total>
     </div>
@@ -35,13 +47,14 @@
 <script>
 import Common from '../view/Common.vue';
 import Total from '../components/Total.vue';
+import { mapState } from 'vuex';
 
 export default {
   created() {
-    if (this.$store.state.vaccinationInfo.length === 0) {
+    if (this.$store.state.totalVaccinationInfo.length === 0) {
       this.startSpinner();
       this.$store
-        .dispatch('GET_VACCINATION_INFO')
+        .dispatch('GET_TOTAL_VACCINATION_INFO')
         .then(() => {
           setTimeout(() => {
             this.endSpinner();
@@ -54,6 +67,9 @@ export default {
     return {
       loading: false,
     };
+  },
+  computed: {
+    ...mapState(['totalVaccinationInfo']),
   },
   methods: {
     startSpinner() {
@@ -71,6 +87,25 @@ export default {
 </script>
 
 <style scoped>
+.total {
+  justify-content: space-evenly;
+}
+.total > div > div {
+  display: flex;
+  margin-top: 5px;
+}
+.total > div > div > div:nth-child(1) {
+  margin-right: 30px;
+}
+.total > div > div > div h3 {
+  margin-bottom: 5px;
+}
+.toDayVaccine {
+  color: #188a17;
+}
+.totalVaccine {
+  color: #5673eb;
+}
 .vaccine {
   width: 486px;
   border: 1px solid #474b55;
@@ -90,8 +125,5 @@ export default {
   width: fit-content;
   line-height: 36px;
   padding: 0px 10px;
-}
-.total {
-  justify-content: space-evenly;
 }
 </style>
