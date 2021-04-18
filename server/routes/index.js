@@ -42,6 +42,7 @@ let BaseQueryParams = '?' + encodeURIComponent('ServiceKey') + `=${config.key}`;
 BaseQueryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
 BaseQueryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
 BaseQueryParams += '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent(`${toDay}`);
+
 router.get('/cityCoronaList', (req, res) => {
   request(
     {
@@ -52,9 +53,26 @@ router.get('/cityCoronaList', (req, res) => {
       if (error) {
         return res.json({ success: false, err: error });
       }
+      // xml => json
       let result = body;
       let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
-      return res.json({ success: true, body: xmlToJson });
+
+      const arr = [];
+      const list = JSON.parse(xmlToJson).response.body.items.item;
+
+      // 합계 제거
+      list.map((item) => {
+        if (item.gubun._text !== '합계') {
+          arr.push(item);
+        }
+      });
+
+      // 전일 대비 확진자 수 기준 내림차순으로 정렬
+      arr.sort((a, b) => {
+        return b.incDec._text - a.incDec._text;
+      });
+
+      return res.json({ success: true, body: arr });
     },
   );
 });
@@ -69,9 +87,13 @@ router.get('/totalCoronaInfo', (req, res) => {
       if (error) {
         return res.json({ success: false, err: error });
       }
+      // xml => json
       let result = body;
       let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
-      return res.json({ success: true, body: xmlToJson });
+
+      const list = JSON.parse(xmlToJson).response.body.items.item;
+
+      return res.json({ success: true, body: list });
     },
   );
 });
@@ -80,16 +102,37 @@ router.get('/worldCoronaList', (req, res) => {
   request(
     {
       url:
-        worldUrl + BaseQueryParams + '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(`${toDay}`),
+        worldUrl +
+        BaseQueryParams +
+        '&' +
+        encodeURIComponent('startCreateDt') +
+        '=' +
+        encodeURIComponent(`${toDay - 1}`),
       method: 'GET',
     },
     function (error, response, body) {
       if (error) {
         return res.json({ success: false, err: error });
       }
+      // xml => json
       let result = body;
       let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
-      return res.json({ success: true, body: xmlToJson });
+
+      const arr = [];
+      const list = JSON.parse(xmlToJson).response.body.items.item;
+
+      // 기타 제거
+      list.map((item) => {
+        if (item.areaNm._text !== '기타') {
+          arr.push(item);
+        }
+      });
+      // 확진자 수 기준 내림차순으로 정렬
+      arr.sort((a, b) => {
+        return b.natDefCnt._text - a.natDefCnt._text;
+      });
+
+      return res.json({ success: true, body: arr });
     },
   );
 });
@@ -140,9 +183,24 @@ router.get('/WeekAgoCoronaInfo', (req, res) => {
       if (error) {
         return res.json({ success: false, err: error });
       }
+      // xml => json
       let result = body;
       let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
-      return res.json({ success: true, body: xmlToJson });
+
+      const arr = [];
+      const list = JSON.parse(xmlToJson).response.body.items.item;
+
+      list.map((item) => {
+        if (item.gubun._text === '합계') {
+          const aweekCorona = {
+            incDec: item.incDec._text,
+            stdDay: item.stdDay._text.slice(7, 13),
+          };
+          arr.push(aweekCorona);
+        }
+      });
+
+      return res.json({ success: true, body: arr });
     },
   );
 });
@@ -163,9 +221,21 @@ router.get('/incDecCoronaInfo', (req, res) => {
       if (error) {
         return res.json({ success: false, err: error });
       }
+      // xml => json
       let result = body;
       let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
-      return res.json({ success: true, body: xmlToJson });
+
+      const list = JSON.parse(xmlToJson).response.body.items.item;
+
+      // 전일 대비 증감 수
+      const incDecCoronaInfo = {
+        decide_cnt: Math.abs(list[0].decideCnt._text - list[1].decideCnt._text),
+        death_cnt: Math.abs(list[0].deathCnt._text - list[1].deathCnt._text),
+        clear_cnt: Math.abs(list[0].clearCnt._text - list[1].clearCnt._text),
+        exam_cnt: Math.abs(list[0].examCnt._text - list[1].examCnt._text),
+      };
+
+      return res.json({ success: true, body: incDecCoronaInfo });
     },
   );
 });
