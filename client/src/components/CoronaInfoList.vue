@@ -23,7 +23,8 @@
               <div>{{ item.gubun._text | makeComma }}</div>
               <div>ㅇ명</div>
               <div>
-                {{ item.defCnt._text | makeComma }}명<span>{{ item.incDec._text | makeComma }}↑</span>
+                {{ item.defCnt._text | makeComma }}명
+                <span> {{ item.incDec._text | makeComma }}<i class="fas fa-arrow-up"></i></span>
               </div>
               <div>{{ item.deathCnt._text | makeComma }}명</div>
               <div>{{ item.isolClearCnt._text | makeComma }}명</div>
@@ -66,6 +67,7 @@ export default {
   display: flex;
   justify-content: center;
   border-radius: 12px;
+  cursor: pointer;
 }
 .select-map > div {
   background-color: #272b38;
@@ -91,6 +93,7 @@ export default {
   padding: 10px;
   padding-left: 0px;
   padding-right: 20px;
+  cursor: pointer;
 }
 .description {
   width: max-content;
@@ -141,5 +144,9 @@ export default {
 .item:nth-child(even) > div {
   border: 1px solid #191f2c;
   background-color: #191f2c;
+}
+i {
+  font-size: 5px;
+  margin-left: 3px;
 }
 </style>

@@ -33,6 +33,7 @@ export default {};
   border-radius: 12px;
   height: 142px;
   margin-bottom: 20px;
+  background-color: #191f2c;
 }
 .today > div {
   display: flex;

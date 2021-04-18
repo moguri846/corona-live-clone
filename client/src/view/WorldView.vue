@@ -22,10 +22,10 @@
     <div slot="content" class="content">
       <div class="item-list">
         <div class="description">
-          <div style="left: 35px">국가</div>
-          <div style="left: 110px">확진자</div>
-          <div style="left: 175px">사망자</div>
-          <div style="left: 225px">확진률 대비 사망률</div>
+          <div style="left: 40px">국가</div>
+          <div style="left: 125px">확진자</div>
+          <div style="left: 200px">사망자</div>
+          <div style="left: 240px">확진률 대비 사망률</div>
         </div>
         <ul class="list">
           <ClipSpinner v-if="loading"></ClipSpinner>
