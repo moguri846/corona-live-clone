@@ -96,7 +96,6 @@ export default {
     AddChart,
     CityCorona,
     ClipSpinner,
-    // PacmanSpinner,
   },
 };
 </script>

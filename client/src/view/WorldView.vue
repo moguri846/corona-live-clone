@@ -7,14 +7,14 @@
           <!-- <div>{{| makeComma }}</div>
           <div>{{| makeComma }</div> -->
           <div>00</div>
-          <div>dd</div>
+          <div>00</div>
         </div>
         <div slot="death" class="death">
           <h3>확진자</h3>
           <!-- <div>{{| makeComma }}</div>
           <div>{{| makeComma }</div> -->
           <div>00</div>
-          <div>dd</div>
+          <div>00</div>
         </div>
       </Total>
       <Today></Today>
@@ -43,7 +43,6 @@
 
 <script>
 import { mapState } from 'vuex';
-// import bus from '../utils/bus';
 import ClipSpinner from 'vue-spinner/src/ClipLoader';
 
 import Common from './Common.vue';
