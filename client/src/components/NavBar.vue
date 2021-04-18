@@ -9,14 +9,28 @@
       <div><router-link to="/faq">자주 묻는 질문</router-link></div>
     </nav>
     <nav class="nav-menu">
-      <div>다크모드</div>
+      <div>
+        다크모드
+        <label class="switch" for="checkbox">
+          <input type="checkbox" id="checkbox" @click="darkMode" />
+          <div class="slider round"></div>
+        </label>
+      </div>
       <div>제보하기</div>
     </nav>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    darkMode(e) {
+      if (!e.target.checked) {
+        console.log('d');
+      }
+    },
+  },
+};
 </script>
 
 <style scpoed>
@@ -43,7 +57,7 @@ export default {};
   margin-top: 15px;
   cursor: pointer;
   position: relative;
-  z-index: 100;
+  overflow: hidden;
 }
 .nav-menu > div {
   display: flex;
@@ -59,11 +73,63 @@ export default {};
   border-radius: 12px;
   background-color: #191f2c;
 }
+.nav-menu:nth-child(3) > div:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+}
 .router-link-exact-active {
   border-left: 3px solid #cfcfcf;
   background-color: #212533;
   margin-left: -1px;
   font-weight: bold;
+}
+.switch {
+  display: inline-block;
+  height: 20px;
+  position: relative;
+  width: 50px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  width: 23px;
+  height: 23px;
+  background-color: #fff;
+  bottom: -2px;
+  content: '';
+  left: -2px;
+  position: absolute;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #5673eb;
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 a {
   padding: 16px;
