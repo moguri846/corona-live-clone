@@ -5,22 +5,22 @@
         <div slot="decide" class="decide">
           <h3>확진자</h3>
           <div>{{ totalCoronaInfo.decideCnt._text | makeComma }}</div>
-          <div class="inc-dec">{{ incDecCoronaInfo.decide_cnt | makeComma }}<i class="fas fa-arrow-up"></i></div>
+          <div class="inc-dec">{{ koreaIncDecCoronaInfo.decide_cnt | makeComma }}<i class="fas fa-arrow-up"></i></div>
         </div>
         <div slot="death" class="death">
           <h3>사망자</h3>
           <div>{{ totalCoronaInfo.deathCnt._text | makeComma }}</div>
-          <div class="inc-dec">{{ incDecCoronaInfo.death_cnt | makeComma }}<i class="fas fa-arrow-up"></i></div>
+          <div class="inc-dec">{{ koreaIncDecCoronaInfo.death_cnt | makeComma }}<i class="fas fa-arrow-up"></i></div>
         </div>
         <div slot="clear" class="clear">
           <h3>격리해제</h3>
           <div>{{ totalCoronaInfo.clearCnt._text | makeComma }}</div>
-          <div class="inc-dec">{{ incDecCoronaInfo.clear_cnt | makeComma }}<i class="fas fa-arrow-up"></i></div>
+          <div class="inc-dec">{{ koreaIncDecCoronaInfo.clear_cnt | makeComma }}<i class="fas fa-arrow-up"></i></div>
         </div>
         <div slot="exam" class="exam">
           <h3>검사중</h3>
           <div>{{ totalCoronaInfo.examCnt._text | makeComma }}</div>
-          <div class="inc-dec">{{ incDecCoronaInfo.exam_cnt | makeComma }}<i class="fas fa-arrow-up"></i></div>
+          <div class="inc-dec">{{ koreaIncDecCoronaInfo.exam_cnt | makeComma }}<i class="fas fa-arrow-up"></i></div>
         </div>
       </Total>
       <Today></Today>
@@ -63,9 +63,9 @@ export default {
       this.startSpinner();
       this.$store.dispatch('GET_A_WEEK_AGO_CORONA_INFO');
     }
-    if (this.$store.state.incDecCoronaInfo.length === 0) {
+    if (this.$store.state.koreaIncDecCoronaInfo.length === 0) {
       this.startSpinner();
-      this.$store.dispatch('GET_INC_DEC_CORONA_INFO');
+      this.$store.dispatch('GET_KOREA_INC_DEC_CORONA_INFO');
     }
     setTimeout(() => {
       this.endSpinner();
@@ -78,7 +78,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['totalCoronaInfo', 'aWeekAgoCoronaInfo', 'incDecCoronaInfo']),
+    ...mapState(['totalCoronaInfo', 'aWeekAgoCoronaInfo', 'koreaIncDecCoronaInfo']),
   },
   methods: {
     startSpinner() {
@@ -115,7 +115,6 @@ export default {
   align-items: center;
   padding: 3px 8px 3px 10px;
 }
-
 i {
   margin-left: 3px;
   font-size: 11px;

@@ -3,7 +3,7 @@
     <div slot="header" class="header">
       <Total :loading="loading">
         <div slot="toDayVaccine" class="toDayVaccine">
-          <h1>당일 접종</h1>
+          <h1>전일 접종</h1>
           <div>
             <div class="toDayVaccine-1">
               <h3>1차 접종</h3>
