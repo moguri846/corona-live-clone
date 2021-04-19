@@ -10,7 +10,7 @@ const getTotalCoronaInfo = () => {
   return axios.get('/api/corona/totalCoronaInfo');
 };
 
-// 세계 정보
+// 국가별 정보
 const getWorldCoronaList = () => {
   return axios.get('/api/corona/worldCoronaList');
 };
@@ -26,8 +26,12 @@ const getAWeekAgoCoronaInfo = () => {
 };
 
 // 전일대비 정보
-const getincDecCoronaInfo = () => {
-  return axios.get('/api/corona/incDecCoronaInfo');
+const getKoreaIncDecCoronaInfo = () => {
+  return axios.get('/api/corona/koreaIncDecCoronaInfo');
+};
+// 세계 종합 정보
+const getTotalWorldCoronaInfo = () => {
+  return axios.get('/api/corona/totalWorldCoronaInfo');
 };
 
 export {
@@ -36,5 +40,6 @@ export {
   getWorldCoronaList,
   getVaccinationInfo,
   getAWeekAgoCoronaInfo,
-  getincDecCoronaInfo,
+  getKoreaIncDecCoronaInfo,
+  getTotalWorldCoronaInfo,
 };

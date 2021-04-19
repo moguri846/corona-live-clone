@@ -4,7 +4,8 @@ import {
   getWorldCoronaList,
   getVaccinationInfo,
   getAWeekAgoCoronaInfo,
-  getincDecCoronaInfo,
+  getKoreaIncDecCoronaInfo,
+  getTotalWorldCoronaInfo,
 } from '../API/index.js';
 import {
   SET_CITY_CORONA_LIST,
@@ -12,7 +13,8 @@ import {
   SET_WORLD_CORONA_LSIT,
   SET_TOTAL_VACCINATION_INFO,
   SET_A_WEEK_AGO_CORONA_INFO,
-  SET_INC_DEC_CORONA_INFO,
+  SET_KOREA_INC_DEC_CORONA_INFO,
+  SET_TOTAL_WORLD_CORONA_INFO,
 } from './type.js';
 
 export default {
@@ -51,9 +53,15 @@ export default {
       })
       .catch(err => console.log(err));
   },
-  GET_INC_DEC_CORONA_INFO({ commit }) {
-    getincDecCoronaInfo().then(({ data }) => {
-      commit(SET_INC_DEC_CORONA_INFO, data.body);
+  GET_KOREA_INC_DEC_CORONA_INFO({ commit }) {
+    getKoreaIncDecCoronaInfo().then(({ data }) => {
+      commit(SET_KOREA_INC_DEC_CORONA_INFO, data.body);
+    });
+  },
+  GET_TOTAL_WORLD_CORONA_INFO({ commit }) {
+    getTotalWorldCoronaInfo().then(({ data }) => {
+      console.log('d');
+      commit(SET_TOTAL_WORLD_CORONA_INFO, data.body);
     });
   },
 };

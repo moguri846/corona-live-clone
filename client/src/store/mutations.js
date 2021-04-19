@@ -14,7 +14,10 @@ export default {
   SET_A_WEEK_AGO_CORONA_INFO(state, data) {
     state.aWeekAgoCoronaInfo = data;
   },
-  SET_INC_DEC_CORONA_INFO(state, data) {
-    state.incDecCoronaInfo = data;
+  SET_KOREA_INC_DEC_CORONA_INFO(state, data) {
+    state.koreaIncDecCoronaInfo = data;
+  },
+  SET_TOTAL_WORLD_CORONA_INFO(state, data) {
+    state.totalWorldCoronaInfo = data;
   },
 };

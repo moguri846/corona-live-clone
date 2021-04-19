@@ -4,17 +4,18 @@
       <Total :loading="loading">
         <div slot="decide" class="decide">
           <h3>확진자</h3>
-          <!-- <div>{{| makeComma }}</div>
-          <div>{{| makeComma }</div> -->
-          <div>00</div>
-          <div>00</div>
+          <div>{{ totalWorldCoronaInfo.TotalConfirmed | makeComma }}</div>
+          <div>{{ totalWorldCoronaInfo.NewConfirmed | makeComma }}<i class="fas fa-arrow-up"></i></div>
         </div>
         <div slot="death" class="death">
-          <h3>확진자</h3>
-          <!-- <div>{{| makeComma }}</div>
-          <div>{{| makeComma }</div> -->
-          <div>00</div>
-          <div>00</div>
+          <h3>사망자</h3>
+          <div>{{ totalWorldCoronaInfo.TotalDeaths | makeComma }}</div>
+          <div>{{ totalWorldCoronaInfo.NewDeaths | makeComma }}<i class="fas fa-arrow-up"></i></div>
+        </div>
+        <div slot="clear" class="clear">
+          <h3>격리해제</h3>
+          <div>{{ totalWorldCoronaInfo.TotalRecovered | makeComma }}</div>
+          <div>{{ totalWorldCoronaInfo.NewRecovered | makeComma }}<i class="fas fa-arrow-up"></i></div>
         </div>
       </Total>
       <Today></Today>
@@ -62,6 +63,17 @@ export default {
         )
         .catch(err => console.log(err));
     }
+    if (this.$store.state.worldCoronaList.length === 0) {
+      this.startSpinner();
+      this.$store
+        .dispatch('GET_TOTAL_WORLD_CORONA_INFO')
+        .then(() =>
+          setTimeout(() => {
+            this.endSpinner();
+          }, 1000),
+        )
+        .catch(err => console.log(err));
+    }
   },
   data() {
     return {
@@ -77,7 +89,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(['worldCoronaList']),
+    ...mapState(['worldCoronaList', 'totalWorldCoronaInfo']),
   },
   components: {
     Common,
@@ -128,5 +140,14 @@ export default {
 }
 .total {
   justify-content: space-evenly;
+}
+
+.total > div > div:nth-child(3) {
+  display: flex;
+  align-items: center;
+}
+i {
+  margin-left: 3px;
+  font-size: 11px;
 }
 </style>

@@ -189,7 +189,7 @@ router.get('/WeekAgoCoronaInfo', (req, res) => {
   );
 });
 
-router.get('/incDecCoronaInfo', (req, res) => {
+router.get('/koreaIncDecCoronaInfo', (req, res) => {
   request(
     {
       url:
@@ -220,6 +220,22 @@ router.get('/incDecCoronaInfo', (req, res) => {
       };
 
       return res.json({ success: true, body: incDecCoronaInfo });
+    },
+  );
+});
+
+router.get('/totalWorldCoronaInfo', (req, res) => {
+  request(
+    {
+      url: 'https://api.covid19api.com/summary',
+      method: 'GET',
+    },
+    function (error, response, body) {
+      if (error) {
+        return res.json({ success: false, err: error });
+      }
+      const totalWorldCoronaInfo = JSON.parse(body).Global;
+      return res.json({ success: true, body: totalWorldCoronaInfo });
     },
   );
 });
