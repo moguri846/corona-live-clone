@@ -60,7 +60,6 @@ export default {
   },
   GET_TOTAL_WORLD_CORONA_INFO({ commit }) {
     getTotalWorldCoronaInfo().then(({ data }) => {
-      console.log('d');
       commit(SET_TOTAL_WORLD_CORONA_INFO, data.body);
     });
   },
