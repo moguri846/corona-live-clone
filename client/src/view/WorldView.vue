@@ -21,34 +21,37 @@
       <Today></Today>
     </div>
     <div slot="content" class="content">
-      <div class="item-list">
-        <div class="description">
-          <div style="left: 40px">국가</div>
-          <div style="left: 125px">확진자</div>
-          <div style="left: 200px">사망자</div>
-          <div style="left: 240px">확진률 대비 사망률</div>
+      <CoronaItemList :loading="loading">
+        <div slot="item-list" class="item-list">
+          <div class="description">
+            <div style="left: 40px">국가</div>
+            <div style="left: 125px">확진자</div>
+            <div style="left: 200px">사망자</div>
+            <div style="left: 240px">확진률 대비 사망률</div>
+          </div>
+          <ul>
+            <ClipSpinner v-if="loading"></ClipSpinner>
+            <li v-for="(item, index) in worldCoronaList" :key="index" class="item">
+              <div>{{ item.nationNm._text | makeComma }}</div>
+              <div>{{ item.natDefCnt._text | makeComma }}</div>
+              <div>{{ item.natDeathCnt._text | makeComma }}</div>
+              <div>{{ item.natDeathRate._text.slice(0, 4) }}</div>
+            </li>
+          </ul>
         </div>
-        <ul class="list">
-          <ClipSpinner v-if="loading"></ClipSpinner>
-          <li v-for="(item, index) in worldCoronaList" :key="index" class="item">
-            <div>{{ item.nationNm._text | makeComma }}</div>
-            <div>{{ item.natDefCnt._text | makeComma }}</div>
-            <div>{{ item.natDeathCnt._text | makeComma }}</div>
-            <div>{{ item.natDeathRate._text.slice(0, 4) }}</div>
-          </li>
-        </ul>
-      </div>
+      </CoronaItemList>
     </div>
   </Common>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import ClipSpinner from 'vue-spinner/src/ClipLoader';
+// import ClipSpinner from 'vue-spinner/src/ClipLoader';
 
 import Common from './Common.vue';
 import Total from '../components/Total.vue';
 import Today from '../components/Today.vue';
+import CoronaItemList from '../components/CoronaItemList.vue';
 
 export default {
   created() {
@@ -95,19 +98,15 @@ export default {
     Common,
     Total,
     Today,
-    ClipSpinner,
+    CoronaItemList,
   },
 };
 </script>
 
 <style scoped>
-.item-list {
+.corona-item-list {
   width: 440px;
   padding: 22px 35px;
-  border: 1px solid #474b55;
-  border-radius: 12px;
-  background-color: #191f2c;
-  margin-bottom: 20px;
 }
 .list {
   margin-bottom: 20px;
