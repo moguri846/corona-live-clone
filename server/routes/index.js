@@ -94,7 +94,14 @@ router.get('/totalCoronaInfo', (req, res) => {
 
       const list = JSON.parse(xmlToJson).response.body.items.item;
 
-      return res.json({ success: true, body: list });
+      const totalCoronaInfo = {
+        decideCnt: list.decideCnt._text,
+        deathCnt: list.deathCnt._text,
+        clearCnt: list.clearCnt._text,
+        examCnt: list.examCnt._text,
+      };
+
+      return res.json({ success: true, body: totalCoronaInfo });
     },
   );
 });
@@ -133,7 +140,7 @@ router.get('/worldCoronaList', (req, res) => {
   );
 });
 
-router.get('/vaccinationInfo', (req, res) => {
+router.get('/totalVaccinationInfo', (req, res) => {
   axios
     .get(vaccine)
     .then((response) => {
@@ -143,10 +150,12 @@ router.get('/vaccinationInfo', (req, res) => {
       const list = JSON.parse(xmlToJson).response.body.items.item;
 
       const totalVaccineInfo = {
-        toDayVaccine: { first: list[0].firstCnt._text, second: list[0].secondCnt._text },
-        totalVaccine: { first: list[2].firstCnt._text, second: list[2].secondCnt._text },
+        toDayFirst: list[0].firstCnt._text,
+        toDaySecond: list[0].secondCnt._text,
+        totalFirst: list[2].firstCnt._text,
+        totalSecond: list[2].secondCnt._text,
       };
-      return res.json({ success: true, totalVaccineInfo });
+      return res.json({ success: true, body: totalVaccineInfo });
     })
     .catch((err) => console.log(err));
 });
@@ -234,7 +243,18 @@ router.get('/totalWorldCoronaInfo', (req, res) => {
       if (error) {
         return res.json({ success: false, err: error });
       }
-      const totalWorldCoronaInfo = JSON.parse(body).Global;
+
+      const list = JSON.parse(body).Global;
+
+      const totalWorldCoronaInfo = {
+        totalConfirmed: list.TotalConfirmed,
+        totalDeaths: list.TotalDeaths,
+        totalRecovered: list.TotalRecovered,
+        newConfirmed: list.NewConfirmed,
+        newDeaths: list.NewDeaths,
+        newRecovered: list.NewRecovered,
+      };
+
       return res.json({ success: true, body: totalWorldCoronaInfo });
     },
   );
