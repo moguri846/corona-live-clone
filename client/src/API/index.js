@@ -16,8 +16,8 @@ const getWorldCoronaList = () => {
 };
 
 // 백신 접종 정보
-const getVaccinationInfo = () => {
-  return axios.get('/api/corona/vaccinationInfo');
+const getTotalVaccinationInfo = () => {
+  return axios.get('/api/corona/totalVaccinationInfo');
 };
 
 // 일주일 동안의 정보
@@ -38,7 +38,7 @@ export {
   getCityCoronaList,
   getTotalCoronaInfo,
   getWorldCoronaList,
-  getVaccinationInfo,
+  getTotalVaccinationInfo,
   getAWeekAgoCoronaInfo,
   getKoreaIncDecCoronaInfo,
   getTotalWorldCoronaInfo,

@@ -2,7 +2,7 @@ import {
   getCityCoronaList,
   getTotalCoronaInfo,
   getWorldCoronaList,
-  getVaccinationInfo,
+  getTotalVaccinationInfo,
   getAWeekAgoCoronaInfo,
   getKoreaIncDecCoronaInfo,
   getTotalWorldCoronaInfo,
@@ -40,9 +40,9 @@ export default {
       .catch(err => console.log(err));
   },
   GET_TOTAL_VACCINATION_INFO({ commit }) {
-    getVaccinationInfo()
+    getTotalVaccinationInfo()
       .then(({ data }) => {
-        commit(SET_TOTAL_VACCINATION_INFO, data.totalVaccineInfo);
+        commit(SET_TOTAL_VACCINATION_INFO, data.body);
       })
       .catch(err => console.log(err));
   },

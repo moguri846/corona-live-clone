@@ -7,11 +7,11 @@
           <div>
             <div class="toDayVaccine-1">
               <h3>1차 접종</h3>
-              {{ totalVaccinationInfo.toDayVaccine.first | makeComma }}
+              {{ totalVaccinationInfo.toDayFirst | makeComma }}
             </div>
             <div class="toDayVaccine-2">
               <h3>2차 접종</h3>
-              {{ totalVaccinationInfo.toDayVaccine.second | makeComma }}
+              {{ totalVaccinationInfo.toDaySecond | makeComma }}
             </div>
           </div>
         </div>
@@ -20,11 +20,11 @@
           <div>
             <div class="totalVaccine-1">
               <h3>1차 접종</h3>
-              {{ totalVaccinationInfo.totalVaccine.first | makeComma }}
+              {{ totalVaccinationInfo.totalFirst | makeComma }}
             </div>
             <div class="totalVaccine-2">
               <h3>2차 접종</h3>
-              {{ totalVaccinationInfo.totalVaccine.second | makeComma }}
+              {{ totalVaccinationInfo.totalSecond | makeComma }}
             </div>
           </div>
         </div>
@@ -53,14 +53,11 @@ export default {
   created() {
     if (this.$store.state.totalVaccinationInfo.length === 0) {
       this.startSpinner();
-      this.$store
-        .dispatch('GET_TOTAL_VACCINATION_INFO')
-        .then(() => {
-          setTimeout(() => {
-            this.endSpinner();
-          }, 1000);
-        })
-        .cacth(err => console.log(err));
+      this.$store.dispatch('GET_TOTAL_VACCINATION_INFO').then(() => {
+        setTimeout(() => {
+          this.endSpinner();
+        }, 1000);
+      });
     }
   },
   data() {
