@@ -6,10 +6,15 @@
     <template v-else>
       <template v-if="this.$route.path === '/'">
         <div class="select-map">
-          <div class="map">지도</div>
-          <div class="city_city">지역별 표</div>
+          <div class="map" @click="selectMapCity">지도</div>
+          <div class="city_city" @click="selectMapCity">지역별 표</div>
         </div>
-        <slot name="item-list"></slot>
+        <template v-if="selectNum === 1">
+          <h1>map</h1>
+        </template>
+        <template v-else>
+          <slot name="item-list"></slot>
+        </template>
       </template>
       <template v-else>
         <slot name="item-list"></slot>
@@ -24,6 +29,20 @@ import ClipSpinner from 'vue-spinner/src/ClipLoader';
 export default {
   props: {
     loading: Boolean,
+  },
+  data() {
+    return {
+      selectNum: 2,
+    };
+  },
+  methods: {
+    selectMapCity(e) {
+      if (e.target.className === 'map') {
+        this.selectNum = 1;
+      } else if (e.target.className === 'city_city') {
+        this.selectNum = 2;
+      }
+    },
   },
   components: {
     ClipSpinner,
