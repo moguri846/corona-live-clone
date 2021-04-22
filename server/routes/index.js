@@ -2,15 +2,9 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 const convert = require('xml-js');
-const config = require('../config/key');
+const configKey = require('../config/key');
+const configUrl = require('../config/url');
 const axios = require('axios');
-
-const baseUrl = 'http://openapi.data.go.kr/openapi/service/rest/Covid19';
-
-const cityUrl = `${baseUrl}/getCovid19SidoInfStateJson`;
-const totalUrl = `${baseUrl}/getCovid19InfStateJson`;
-const worldUrl = `${baseUrl}/getCovid19NatInfStateJson`;
-const vaccine = 'https://nip.kdca.go.kr/irgd/cov19stats.do?list=all';
 
 const now = new Date();
 let hour = now.getHours();
@@ -39,7 +33,7 @@ if (count) {
 
 const toDay = `${year}${month < 10 ? `0${month}` : `${month}`}${day < 10 ? `0${day}` : `${day}`}`;
 
-let BaseQueryParams = '?' + encodeURIComponent('ServiceKey') + `=${config.key}`; /* Service Key*/
+let BaseQueryParams = '?' + encodeURIComponent('ServiceKey') + `=${configKey.key}`; /* Service Key*/
 BaseQueryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
 BaseQueryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
 BaseQueryParams += '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent(`${toDay}`);
@@ -47,7 +41,13 @@ BaseQueryParams += '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComp
 router.get('/cityCoronaList', (req, res) => {
   request(
     {
-      url: cityUrl + BaseQueryParams + '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(`${toDay}`),
+      url:
+        `${configUrl.cityUrl}` +
+        BaseQueryParams +
+        '&' +
+        encodeURIComponent('startCreateDt') +
+        '=' +
+        encodeURIComponent(`${toDay}`),
       method: 'GET',
     },
     function (error, response, body) {
@@ -61,16 +61,23 @@ router.get('/cityCoronaList', (req, res) => {
       const arr = [];
       const list = JSON.parse(xmlToJson).response.body.items.item;
 
-      // 합계 제거
       list.map((item) => {
         if (item.gubun._text !== '합계') {
-          arr.push(item);
+          const cityCoronaInfo = {
+            gubun: item.gubun._text,
+            defCnt: item.defCnt._text,
+            incDec: item.incDec._text,
+            deathCnt: item.deathCnt._text,
+            isolClearCnt: item.isolClearCnt._text,
+            qurRate: item.qurRate._text,
+          };
+          arr.push(cityCoronaInfo);
         }
       });
 
       // 전일 대비 확진자 수 기준 내림차순으로 정렬
       arr.sort((a, b) => {
-        return b.incDec._text - a.incDec._text;
+        return b.incDec - a.incDec;
       });
 
       return res.json({ success: true, body: arr });
@@ -81,7 +88,12 @@ router.get('/totalCoronaInfo', (req, res) => {
   request(
     {
       url:
-        totalUrl + BaseQueryParams + '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(`${toDay}`),
+        `${configUrl.totalUrl}` +
+        BaseQueryParams +
+        '&' +
+        encodeURIComponent('startCreateDt') +
+        '=' +
+        encodeURIComponent(`${toDay}`),
       method: 'GET',
     },
     function (error, response, body) {
@@ -110,7 +122,12 @@ router.get('/worldCoronaList', (req, res) => {
   request(
     {
       url:
-        worldUrl + BaseQueryParams + '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(`${toDay}`),
+        `${configUrl.worldUrl}` +
+        BaseQueryParams +
+        '&' +
+        encodeURIComponent('startCreateDt') +
+        '=' +
+        encodeURIComponent(`${toDay}`),
       method: 'GET',
     },
     function (error, response, body) {
@@ -124,15 +141,21 @@ router.get('/worldCoronaList', (req, res) => {
       const arr = [];
       const list = JSON.parse(xmlToJson).response.body.items.item;
 
-      // 기타 제거
       list.map((item) => {
         if (item.areaNm._text !== '기타') {
-          arr.push(item);
+          const worldCoronaInfo = {
+            nationNm: item.nationNm._text,
+            natDefCnt: item.natDefCnt._text,
+            natDeathCnt: item.natDeathCnt._text,
+            natDeathRate: item.natDeathRate._text.slice(0, 4),
+          };
+          arr.push(worldCoronaInfo);
         }
       });
+
       // 확진자 수 기준 내림차순으로 정렬
       arr.sort((a, b) => {
-        return b.natDefCnt._text - a.natDefCnt._text;
+        return b.natDefCnt - a.natDefCnt;
       });
 
       return res.json({ success: true, body: arr });
@@ -142,7 +165,7 @@ router.get('/worldCoronaList', (req, res) => {
 
 router.get('/totalVaccinationInfo', (req, res) => {
   axios
-    .get(vaccine)
+    .get(`${configUrl.vaccineUrl}`)
     .then((response) => {
       let result = response.data;
       let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
@@ -164,7 +187,7 @@ router.get('/WeekAgoCoronaInfo', (req, res) => {
   request(
     {
       url:
-        cityUrl +
+        `${configUrl.cityUrl}` +
         BaseQueryParams +
         '&' +
         encodeURIComponent('startCreateDt') +
@@ -185,11 +208,11 @@ router.get('/WeekAgoCoronaInfo', (req, res) => {
 
       list.map((item) => {
         if (item.gubun._text === '합계') {
-          const aweekCorona = {
+          const aweekCoronaInfo = {
             incDec: item.incDec._text,
             stdDay: item.stdDay._text.slice(7, 13),
           };
-          arr.push(aweekCorona);
+          arr.push(aweekCoronaInfo);
         }
       });
 
@@ -202,7 +225,7 @@ router.get('/koreaIncDecCoronaInfo', (req, res) => {
   request(
     {
       url:
-        totalUrl +
+        `${configUrl.totalUrl}` +
         BaseQueryParams +
         '&' +
         encodeURIComponent('startCreateDt') +
@@ -236,7 +259,7 @@ router.get('/koreaIncDecCoronaInfo', (req, res) => {
 router.get('/totalWorldCoronaInfo', (req, res) => {
   request(
     {
-      url: 'https://api.covid19api.com/summary',
+      url: `${configUrl.totalWorldUrl}`,
       method: 'GET',
     },
     function (error, response, body) {

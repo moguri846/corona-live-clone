@@ -31,10 +31,10 @@
           </div>
           <ul>
             <li v-for="(item, index) in worldCoronaList" :key="index" class="item">
-              <div>{{ item.nationNm._text | makeComma }}</div>
-              <div>{{ item.natDefCnt._text | makeComma }}</div>
-              <div>{{ item.natDeathCnt._text | makeComma }}</div>
-              <div>{{ item.natDeathRate._text.slice(0, 4) }}</div>
+              <div>{{ item.nationNm | makeComma }}</div>
+              <div>{{ item.natDefCnt | makeComma }}</div>
+              <div>{{ item.natDeathCnt | makeComma }}</div>
+              <div>{{ item.natDeathRate }}</div>
             </li>
           </ul>
         </div>

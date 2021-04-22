@@ -45,15 +45,15 @@
           </div>
           <ul>
             <li v-for="(item, index) in cityCoronaList" :key="index" class="item">
-              <div>{{ item.gubun._text | makeComma }}</div>
+              <div>{{ item.gubun | makeComma }}</div>
               <div>ㅇ명</div>
               <div>
-                {{ item.defCnt._text | makeComma }}명
-                <span> {{ item.incDec._text | makeComma }}<i class="fas fa-arrow-up"></i></span>
+                {{ item.defCnt | makeComma }}명
+                <span> {{ item.incDec | makeComma }}<i class="fas fa-arrow-up"></i></span>
               </div>
-              <div>{{ item.deathCnt._text | makeComma }}명</div>
-              <div>{{ item.isolClearCnt._text | makeComma }}명</div>
-              <div>{{ item.qurRate._text }}명</div>
+              <div>{{ item.deathCnt | makeComma }}명</div>
+              <div>{{ item.isolClearCnt | makeComma }}명</div>
+              <div>{{ item.qurRate }}명</div>
               <div><i class="fas fa-chevron-right"></i></div>
             </li>
           </ul>
