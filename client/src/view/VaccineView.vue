@@ -31,23 +31,17 @@
       </Total>
     </div>
     <div slot="content" class="content">
-      <div class="vaccine">
-        <div class="type-of-vaccine">
-          <div>화이자</div>
-          <div>아스트라제네카</div>
-          <div>얀센</div>
-          <div>모더나</div>
-        </div>
-        <div class="desc"></div>
-      </div>
+      <TypeOfVaccine></TypeOfVaccine>
     </div>
   </Common>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import Common from '../view/Common.vue';
 import Total from '../components/Total.vue';
-import { mapState } from 'vuex';
+import TypeOfVaccine from '../components/TypeOfVaccine.vue';
 
 export default {
   created() {
@@ -79,6 +73,7 @@ export default {
   components: {
     Common,
     Total,
+    TypeOfVaccine,
   },
 };
 </script>
@@ -102,25 +97,5 @@ export default {
 }
 .totalVaccine {
   color: #5673eb;
-}
-.vaccine {
-  width: 486px;
-  border: 1px solid #474b55;
-  padding: 12px;
-  border-radius: 12px;
-  background-color: #191f2c;
-  margin-bottom: 20px;
-}
-.type-of-vaccine {
-  display: flex;
-  justify-content: space-evenly;
-  background-color: #272b38;
-  border-radius: 12px;
-  height: 36px;
-}
-.type-of-vaccine > div {
-  width: fit-content;
-  line-height: 36px;
-  padding: 0px 10px;
 }
 </style>

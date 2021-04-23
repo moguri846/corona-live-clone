@@ -6,8 +6,8 @@
     <template v-else>
       <template v-if="this.$route.path === '/'">
         <div class="select-map">
-          <div class="map" @click="selectMapCity">지도</div>
-          <div class="city_city" @click="selectMapCity">지역별 표</div>
+          <div class="map" @click="selectMapCity" :class="{ active: selectNum === 1 }">지도</div>
+          <div class="city_city" @click="selectMapCity" :class="{ active: selectNum === 2 }">지역별 표</div>
         </div>
         <template v-if="selectNum === 1">
           <h1>map</h1>
@@ -63,6 +63,8 @@ export default {
   justify-content: center;
   border-radius: 12px;
   cursor: pointer;
+  background-color: #272b38;
+  color: #717276;
 }
 .select-map > div {
   background-color: #272b38;
@@ -80,5 +82,11 @@ export default {
 .select-map > .city_city {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
+}
+.active {
+  border: 1px solid #555862;
+  border-radius: 12px;
+  color: #cfcfcf;
+  background-color: #2e323e;
 }
 </style>
