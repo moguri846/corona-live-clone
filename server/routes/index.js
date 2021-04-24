@@ -65,6 +65,7 @@ router.get('/cityCoronaList', (req, res) => {
         if (item.gubun._text !== '합계') {
           const cityCoronaInfo = {
             gubun: item.gubun._text,
+            gubun_en: item.gubunEn._text,
             defCnt: item.defCnt._text,
             incDec: item.incDec._text,
             deathCnt: item.deathCnt._text,
