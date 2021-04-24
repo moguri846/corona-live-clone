@@ -10,9 +10,9 @@
           <div class="city_city" @click="selectMapCity" :class="{ active: selectNum === 2 }">지역별 표</div>
         </div>
         <template v-if="selectNum === 1">
-          <h1>map</h1>
+          <KoreaMap></KoreaMap>
         </template>
-        <template v-else>
+        <template v-else-if="selectNum === 2">
           <slot name="item-list"></slot>
         </template>
       </template>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import KoreaMap from './KoreaMap.vue';
 import ClipSpinner from 'vue-spinner/src/ClipLoader';
 
 export default {
@@ -45,6 +46,7 @@ export default {
     },
   },
   components: {
+    KoreaMap,
     ClipSpinner,
   },
 };
@@ -83,10 +85,16 @@ export default {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
+
 .active {
   border: 1px solid #555862;
   border-radius: 12px;
   color: #cfcfcf;
   background-color: #2e323e;
+}
+i {
+  margin-top: 3px;
+  margin-right: 2px;
+  font-size: 12px;
 }
 </style>

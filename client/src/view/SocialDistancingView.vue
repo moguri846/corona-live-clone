@@ -9,19 +9,23 @@
       </HeaderTitle>
     </div>
     <div slot="content" class="content">
-      koreaMap
+      <!-- 나중에 코드 수정 -->
+      <koreaMap></koreaMap>
     </div>
   </Common>
 </template>
 
 <script>
 import Common from '../view/Common.vue';
+
 import HeaderTitle from '../components/HeaderTitle';
+import koreaMap from '../components/KoreaMap.vue';
 
 export default {
   components: {
     Common,
     HeaderTitle,
+    koreaMap,
   },
 };
 </script>
