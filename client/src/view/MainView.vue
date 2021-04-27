@@ -245,4 +245,9 @@ export default {
   border: 1px solid #191f2c;
   background-color: #191f2c;
 }
+i {
+  margin-left: 3px;
+  margin-top: 2px;
+  font-size: 12px;
+}
 </style>
