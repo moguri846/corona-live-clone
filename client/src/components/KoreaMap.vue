@@ -1,20 +1,32 @@
 <template>
   <div class="korea-map">
-    <img src="../img/1619245025827.png" />
-    <div class="gubun-list">
-      <div v-for="(item, index) in cityCoronaList" :key="index" class="gubun" :class="item.gubun_en">
-        <div>{{ item.gubun }}</div>
-        <div><i class="fas fa-arrow-up"></i>{{ item.incDec }}</div>
+    <template v-if="loading">
+      <ClipSpinner></ClipSpinner>
+    </template>
+    <template v-else>
+      <img src="../img/1619245025827.png" />
+      <div class="gubun-list">
+        <div v-for="(item, index) in cityCoronaList" :key="index" class="gubun" :class="item.gubun_en">
+          <div>{{ item.gubun }}</div>
+          <div><i class="fas fa-arrow-up"></i>{{ item.incDec }}</div>
+        </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import ClipSpinner from 'vue-spinner/src/ClipLoader';
 export default {
+  props: {
+    loading: Boolean,
+  },
   computed: {
     ...mapState(['cityCoronaList']),
+  },
+  components: {
+    ClipSpinner,
   },
 };
 </script>

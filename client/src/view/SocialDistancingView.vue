@@ -10,22 +10,49 @@
     </div>
     <div slot="content" class="content">
       <!-- 나중에 코드 수정 -->
-      <koreaMap></koreaMap>
+      <KoreaMap :loading="koreaMapLoading"></KoreaMap>
     </div>
   </Common>
 </template>
 
 <script>
 import Common from '../view/Common.vue';
-
 import HeaderTitle from '../components/HeaderTitle';
-import koreaMap from '../components/KoreaMap.vue';
+import KoreaMap from '../components/KoreaMap.vue';
+
+const CITY_CORONA_LIST = 'CITY_CORONA_LIST';
 
 export default {
+  created() {
+    if (this.$store.state.cityCoronaList.length === 0) {
+      this.stateSpinner();
+      this.$store
+        .dispatch(`GET_${CITY_CORONA_LIST}`)
+        .then(() =>
+          setTimeout(() => {
+            this.endSpinner();
+          }, 1000),
+        )
+        .catch(err => console.log(err));
+    }
+  },
+  data() {
+    return {
+      koreaMapLoading: false,
+    };
+  },
+  methods: {
+    stateSpinner() {
+      this.koreaMapLoading = true;
+    },
+    endSpinner() {
+      this.koreaMapLoading = false;
+    },
+  },
   components: {
     Common,
     HeaderTitle,
-    koreaMap,
+    KoreaMap,
   },
 };
 </script>
