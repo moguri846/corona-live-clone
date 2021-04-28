@@ -10,9 +10,9 @@
     </nav>
     <nav class="nav-menu">
       <div>
-        다크모드
+        라이트 모드
         <label class="switch" for="checkbox">
-          <input type="checkbox" id="checkbox" @click="darkMode" />
+          <input type="checkbox" id="checkbox" @click="lightMode" />
           <div class="slider round"></div>
         </label>
       </div>
@@ -24,16 +24,18 @@
 <script>
 export default {
   methods: {
-    darkMode(e) {
-      if (!e.target.checked) {
-        console.log('d');
+    lightMode(e) {
+      if (e.target.checked) {
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.remove('light');
       }
     },
   },
 };
 </script>
 
-<style scpoed>
+<style>
 .menu {
   height: 421px;
   position: sticky;
@@ -134,5 +136,14 @@ input:checked + .slider:before {
 a {
   padding: 16px;
   width: 240px;
+}
+body > div > div:nth-child(1) > div,
+body > div > div:nth-child(1) > nav,
+body > div > div:nth-child(1) > nav > div > a {
+  background-color: var(--div-color);
+  color: var(--text-color);
+}
+body > div > div:nth-child(1) > nav > div > .router-link-exact-active {
+  background-color: var(--a-color);
 }
 </style>

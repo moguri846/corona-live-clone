@@ -52,4 +52,11 @@ export default {};
   text-align: center;
   font-size: 40px;
 }
+/*
+  light mode
+*/
+body > div > div:nth-child(2) > div > div:nth-child(2) {
+  background-color: var(--div-color);
+  color: var(--text-color);
+}
 </style>

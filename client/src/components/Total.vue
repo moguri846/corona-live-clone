@@ -87,4 +87,13 @@ h3 {
 .v-spinner {
   margin: 0 auto;
 }
+/*
+ light mode
+*/
+body > div > div:nth-child(2) > div > div,
+body > div > div:nth-child(2) > div > div > div > h3,
+body > div > div:nth-child(2) > div > div > .death > div:nth-child(2) {
+  background-color: var(--div-color);
+  color: var(--text-color);
+}
 </style>

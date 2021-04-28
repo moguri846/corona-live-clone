@@ -53,6 +53,12 @@ export default {
 </script>
 
 <style scoped>
+html {
+  --reverse-list-color: #191f2c;
+}
+html.dark {
+  --reverse-list-color: white;
+}
 .corona-item-list {
   border: 1px solid #474b55;
   border-radius: 12px;
@@ -96,5 +102,25 @@ i {
   margin-top: 3px;
   margin-right: 2px;
   font-size: 12px;
+}
+/*
+  light mode
+*/
+body > div > div:nth-child(2) > div > div {
+  background-color: var(--div-color);
+}
+body > div > div:nth-child(2) > div > div > div:nth-child(1),
+body > div > div:nth-child(2) > div > div > div:nth-child(1) > div {
+  background-color: var(--select-color);
+}
+body > div > div:nth-child(2) > div > div > div:nth-child(2) > ul > li:nth-child(odd) > div {
+  background-color: var(--list-color);
+  border: 1px solid var(--list-color);
+  color: var(--text-color);
+}
+body > div > div:nth-child(2) > div > div > div:nth-child(2) > ul > li:nth-child(even) > div {
+  background-color: var(--reverse-list-color);
+  border: 1px solid var(--reverse-list-color);
+  color: var(--text-color);
 }
 </style>

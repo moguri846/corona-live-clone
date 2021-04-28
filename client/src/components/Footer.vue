@@ -45,4 +45,11 @@ export default {};
 .me > .my-github {
   padding-left: 5px;
 }
+/* 
+  light mode
+*/
+.thank-you {
+  background-color: var(--div-color);
+  color: var(--text-color);
+}
 </style>
