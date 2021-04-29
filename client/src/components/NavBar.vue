@@ -80,7 +80,7 @@ export default {
   justify-content: space-between;
 }
 .router-link-exact-active {
-  border-left: 3px solid #cfcfcf;
+  border-left: 3px solid var(--nav-menu-b-l);
   background-color: #212533;
   margin-left: -1px;
   font-weight: bold;
@@ -137,13 +137,21 @@ a {
   padding: 16px;
   width: 240px;
 }
-body > div > div:nth-child(1) > div,
-body > div > div:nth-child(1) > nav,
-body > div > div:nth-child(1) > nav > div > a {
+/* 
+  light mode
+*/
+.menu > div,
+.menu > nav,
+.menu > nav > div > a {
   background-color: var(--div-color);
   color: var(--text-color);
 }
-body > div > div:nth-child(1) > nav > div > .router-link-exact-active {
+.menu > div,
+.menu > nav {
+  border: 1px solid var(--border-color);
+}
+.menu > nav > div > .router-link-exact-active {
+  border-left: 3px solid var(--nav-menu-boder-left);
   background-color: var(--a-color);
 }
 </style>

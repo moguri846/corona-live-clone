@@ -77,4 +77,15 @@ export default {
   background-color: #1e253b;
   padding: 2px 8px;
 }
+/*
+  light mode
+*/
+.title > h1,
+.title > h3 {
+  color: var(--text-color);
+}
+.title > h1 > span {
+  background-color: var(--social-span-color);
+  border: 1px solid var(--social-span-color);
+}
 </style>

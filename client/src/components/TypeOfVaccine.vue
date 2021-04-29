@@ -194,6 +194,7 @@ export default {
   padding: 0px 3px;
   text-align: center;
   line-height: 36px;
+  font-weight: bold;
   cursor: pointer;
 }
 .desc > div {
@@ -206,13 +207,28 @@ export default {
   margin-right: 10px;
   color: #949aa4;
 }
-.desc > div > div:nth-child(2) {
-  color: #e3f8f2;
-}
 .active {
   border: 1px solid #555862;
   border-radius: 12px;
   color: #cfcfcf;
   background-color: #2e323e;
+}
+/*
+  light mode
+*/
+.vaccine {
+  background-color: var(--div-color);
+  border: 1px solid var(--border-color);
+}
+.vaccine > .type-of-vaccine {
+  background-color: var(--select-color);
+}
+.vaccine > .type-of-vaccine > .active {
+  background-color: var(--active-bg-color);
+  border: 1px solid var(--active-border-color);
+  color: var(--text-color);
+}
+.vaccine > div > div > div > div:nth-child(2) {
+  color: var(--text-color);
 }
 </style>

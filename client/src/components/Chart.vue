@@ -71,3 +71,12 @@ export default {
   },
 };
 </script>
+<style scoped>
+/*
+  light mode content
+*/
+body > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) {
+  background-color: var(--div-color);
+  border: 1px solid var(--border-color);
+}
+</style>

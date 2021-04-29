@@ -1,7 +1,5 @@
 <template>
-  <div>
-    + 그래프 추가
-  </div>
+  <div>+ <span>그래프</span>추가</div>
 </template>
 
 <script>
@@ -10,7 +8,7 @@ export default {};
 
 <style scoped>
 div {
-  width: 510px;
+  width: 516px;
   height: 62px;
   border: 1px solid #474b55;
   border-radius: 12px;
@@ -19,5 +17,16 @@ div {
   align-items: center;
   cursor: pointer;
   margin-bottom: 20px;
+}
+div > span {
+  margin-right: 5px;
+}
+div {
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  background-color: var(--div-color);
+}
+div > span {
+  font-weight: bold;
 }
 </style>

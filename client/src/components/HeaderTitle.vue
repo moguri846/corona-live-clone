@@ -18,4 +18,11 @@ export default {};
   font-size: 20px;
   margin-bottom: 20px;
 }
+/*
+  light mode
+*/
+.title {
+  background-color: var(--div-color);
+  border: 1px solid var(--border-color);
+}
 </style>

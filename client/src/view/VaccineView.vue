@@ -98,4 +98,11 @@ export default {
 .totalVaccine {
   color: #5673eb;
 }
+/*
+  light mode
+*/
+.toDayVaccine > div > div > h3,
+.totalVaccine > div > div > h3 {
+  color: var(--text-color);
+}
 </style>

@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 .total {
-  width: 470px;
+  width: 476px;
   display: flex;
   margin: 0px;
   padding: 20px;
@@ -61,28 +61,28 @@ h3 {
 }
 .decide > div:nth-child(3) {
   color: #eb5374;
-  background-color: #262331;
+  background-color: var(--decide-color);
 }
 .death > div {
   color: #f0f8ff;
 }
 .death > div:nth-child(3) {
   color: #6b6d71;
-  background-color: #242836;
+  background-color: var(--death-color);
 }
 .clear > div {
   color: #188a17;
 }
 .clear > div:nth-child(3) {
   color: #188a17;
-  background-color: #19282b;
+  background-color: var(--clear-color);
 }
 .exam > div {
   color: #4173eb;
 }
 .exam > div:nth-child(3) {
   color: #4173eb;
-  background-color: #1d2438;
+  background-color: var(--exam-color);
 }
 .v-spinner {
   margin: 0 auto;
@@ -90,9 +90,12 @@ h3 {
 /*
  light mode
 */
-body > div > div:nth-child(2) > div > div,
-body > div > div:nth-child(2) > div > div > div > h3,
-body > div > div:nth-child(2) > div > div > .death > div:nth-child(2) {
+.total {
+  border: 1px solid var(--border-color);
+}
+.total,
+.total > div > h3,
+.total .death > div:nth-child(2) {
   background-color: var(--div-color);
   color: var(--text-color);
 }

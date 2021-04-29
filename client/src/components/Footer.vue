@@ -14,7 +14,7 @@ export default {};
 
 <style scoped>
 .thank-you {
-  width: 510px;
+  width: 516px;
   height: 100px;
   position: relative;
   display: flex;
@@ -51,5 +51,6 @@ export default {};
 .thank-you {
   background-color: var(--div-color);
   color: var(--text-color);
+  border: 1px solid var(--border-color);
 }
 </style>

@@ -164,4 +164,18 @@ i {
   margin-left: 3px;
   font-size: 11px;
 }
+/*
+  light mode
+*/
+.content > div > .item-list > ul > li {
+  color: var(--text-color);
+}
+.content > div > .item-list > ul > li:nth-child(odd) > div {
+  background-color: var(--list-odd-color);
+  border: 1px solid var(--list-odd-color);
+}
+.content > div > .item-list > ul > li:nth-child(even) > div {
+  background-color: var(--list-even-color);
+  border: 1px solid var(--list-even-color);
+}
 </style>

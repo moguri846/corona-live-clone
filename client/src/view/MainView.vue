@@ -217,8 +217,8 @@ export default {
 }
 .item > div:nth-child(3) span {
   margin-left: 10px;
-  color: #af4661;
-  background-color: #352e3d;
+  color: var(--list-span-text-color);
+  background-color: var(--list-span-color);
   border-radius: 12px;
   padding: 2.5px 5px;
   font-size: 13px;
@@ -249,5 +249,19 @@ i {
   margin-left: 3px;
   margin-top: 2px;
   font-size: 12px;
+}
+/*
+  light mode
+*/
+.content > div > .item-list > ul > li {
+  color: var(--text-color);
+}
+.content > div > .item-list > ul > li:nth-child(odd) > div {
+  background-color: var(--list-odd-color);
+  border: 1px solid var(--list-odd-color);
+}
+.content > div > .item-list > ul > li:nth-child(even) > div {
+  background-color: var(--list-even-color);
+  border: 1px solid var(--list-even-color);
 }
 </style>

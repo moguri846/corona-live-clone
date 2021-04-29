@@ -53,12 +53,6 @@ export default {
 </script>
 
 <style scoped>
-html {
-  --reverse-list-color: #191f2c;
-}
-html.dark {
-  --reverse-list-color: white;
-}
 .corona-item-list {
   border: 1px solid #474b55;
   border-radius: 12px;
@@ -69,18 +63,17 @@ html.dark {
 .select-map {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
   border-radius: 12px;
   cursor: pointer;
-  background-color: #272b38;
   color: #717276;
 }
 .select-map > div {
-  background-color: #272b38;
+  width: 230px;
+  height: 37px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 230px;
-  height: 37px;
   cursor: pointer;
 }
 .select-map > .map {
@@ -94,9 +87,9 @@ html.dark {
 
 .active {
   border: 1px solid #555862;
+  background-color: white;
   border-radius: 12px;
-  color: #cfcfcf;
-  background-color: #2e323e;
+  color: var(--text-color);
 }
 i {
   margin-top: 3px;
@@ -108,19 +101,15 @@ i {
 */
 body > div > div:nth-child(2) > div > div {
   background-color: var(--div-color);
+  border: 1px solid var(--border-color);
 }
-body > div > div:nth-child(2) > div > div > div:nth-child(1),
-body > div > div:nth-child(2) > div > div > div:nth-child(1) > div {
+
+.content > div > .select-map,
+.content > div > .select-map > div {
   background-color: var(--select-color);
 }
-body > div > div:nth-child(2) > div > div > div:nth-child(2) > ul > li:nth-child(odd) > div {
-  background-color: var(--list-color);
-  border: 1px solid var(--list-color);
-  color: var(--text-color);
-}
-body > div > div:nth-child(2) > div > div > div:nth-child(2) > ul > li:nth-child(even) > div {
-  background-color: var(--reverse-list-color);
-  border: 1px solid var(--reverse-list-color);
-  color: var(--text-color);
+.content > div > .select-map > .active {
+  background-color: var(--active-bg-color);
+  border: 1px solid var(--border-color);
 }
 </style>

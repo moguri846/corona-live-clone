@@ -55,8 +55,12 @@ export default {};
 /*
   light mode
 */
-body > div > div:nth-child(2) > div > div:nth-child(2) {
+.today {
   background-color: var(--div-color);
+  border: 1px solid var(--border-color);
   color: var(--text-color);
+}
+.today > div {
+  border: 1px solid var(--border-color);
 }
 </style>
