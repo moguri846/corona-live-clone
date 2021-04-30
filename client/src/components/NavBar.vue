@@ -23,12 +23,29 @@
 
 <script>
 export default {
+  created() {
+    if (localStorage.length > 0) {
+      setTimeout(() => {
+        const checkbox = document.getElementById('checkbox');
+        let checked = localStorage.getItem('LightMode :)');
+        checkbox.checked = checked;
+
+        if (checkbox.checked) {
+          document.documentElement.classList.add('light');
+        } else {
+          document.documentElement.classList.remove('light');
+        }
+      });
+    }
+  },
   methods: {
-    lightMode(e) {
-      if (e.target.checked) {
+    lightMode({ target: { checked } }) {
+      if (checked) {
         document.documentElement.classList.add('light');
+        localStorage.setItem('LightMode :)', true);
       } else {
         document.documentElement.classList.remove('light');
+        localStorage.removeItem('LightMode :)');
       }
     },
   },
