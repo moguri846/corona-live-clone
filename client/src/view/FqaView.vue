@@ -35,6 +35,9 @@ export default {
 .router-link-active {
   padding: 0px;
 }
+/*
+  light mode
+*/
 .title,
 .title > div > a > i {
   color: var(--text-color);

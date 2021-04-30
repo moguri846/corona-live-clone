@@ -120,7 +120,7 @@ export default {
 
 <style scoped>
 .corona-item-list {
-  width: 440px;
+  width: 446px;
   padding: 22px 35px;
 }
 .list {

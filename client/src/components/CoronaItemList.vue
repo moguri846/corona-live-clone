@@ -69,7 +69,7 @@ export default {
   color: #717276;
 }
 .select-map > div {
-  width: 230px;
+  width: 232px;
   height: 37px;
   display: flex;
   justify-content: center;

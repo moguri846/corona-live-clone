@@ -10,7 +10,7 @@ export default {};
 
 <style scoped>
 .title {
-  width: 470px;
+  width: 476px;
   padding: 20px;
   border-radius: 12px;
   border: 1px solid #474b55;

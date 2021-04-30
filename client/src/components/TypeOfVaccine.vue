@@ -175,7 +175,7 @@ export default {
 
 <style scoped>
 .vaccine {
-  width: 460px;
+  width: 466px;
   border: 1px solid #474b55;
   padding: 25px;
   border-radius: 12px;

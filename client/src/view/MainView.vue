@@ -173,10 +173,10 @@ export default {
   justify-content: space-between;
 }
 .content > div:nth-child(1) {
-  border: 1px solid #474b55;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   margin-bottom: 20px;
-  background-color: #191f2c;
+  background-color: var(--div-color);
 }
 .total > div > div:nth-child(3) {
   display: flex;
