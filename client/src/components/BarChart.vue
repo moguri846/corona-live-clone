@@ -41,7 +41,9 @@ export default {
         scales: {
           yAxes: [
             {
+              stacked: true,
               ticks: {
+                display: true,
                 beginAtZero: true,
               },
               gridLines: {
@@ -51,6 +53,7 @@ export default {
           ],
           xAxes: [
             {
+              stacked: true,
               gridLines: {
                 display: false,
               },
@@ -71,3 +74,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.chartjs-render-monitor {
+  width: 510px;
+}
+</style>

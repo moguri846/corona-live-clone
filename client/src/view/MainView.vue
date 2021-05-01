@@ -30,7 +30,7 @@
         <ClipSpinner></ClipSpinner>
       </template>
       <template v-else>
-        <Chart :chartData="aWeekAgoCoronaInfo"></Chart>
+        <BarChart :chartData="aWeekAgoCoronaInfo"></BarChart>
       </template>
       <AddChart></AddChart>
       <CoronaItemList :loading="cityCoronaListLoading">
@@ -70,7 +70,7 @@ import ClipSpinner from 'vue-spinner/src/ClipLoader';
 import Common from './Common.vue';
 import Total from '../components/Total.vue';
 import Today from '../components/Today.vue';
-import Chart from '../components/Chart.vue';
+import BarChart from '../components/BarChart.vue';
 import AddChart from '../components/AddChart.vue';
 import CoronaItemList from '../components/CoronaItemList.vue';
 
@@ -160,7 +160,7 @@ export default {
     Common,
     Total,
     Today,
-    Chart,
+    BarChart,
     AddChart,
     CoronaItemList,
     ClipSpinner,
