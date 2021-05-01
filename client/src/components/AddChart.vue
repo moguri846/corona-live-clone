@@ -8,7 +8,7 @@ export default {};
 
 <style scoped>
 div {
-  width: 516px;
+  width: 508px;
   height: 62px;
   border: 1px solid #474b55;
   border-radius: 12px;

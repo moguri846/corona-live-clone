@@ -14,7 +14,7 @@ export default {};
 
 <style scoped>
 .thank-you {
-  width: 516px;
+  width: 508px;
   height: 100px;
   position: relative;
   display: flex;
@@ -44,6 +44,9 @@ export default {};
 }
 .me > .my-github {
   padding-left: 5px;
+}
+.me > .my-github > span {
+  color: var(--text-color);
 }
 /* 
   light mode

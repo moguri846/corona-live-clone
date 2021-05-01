@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 .total {
-  width: 476px;
+  width: 468px;
   display: flex;
   margin: 0px;
   padding: 20px;

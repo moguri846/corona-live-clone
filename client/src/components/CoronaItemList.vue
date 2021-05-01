@@ -54,6 +54,7 @@ export default {
 
 <style scoped>
 .corona-item-list {
+  width: 458px;
   border: 1px solid #474b55;
   border-radius: 12px;
   background-color: #191f2c;

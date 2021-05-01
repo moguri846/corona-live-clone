@@ -29,6 +29,7 @@ export default {};
 
 <style scoped>
 .today {
+  width: 508px;
   border: 1px solid #474b55;
   border-radius: 12px;
   height: 142px;
