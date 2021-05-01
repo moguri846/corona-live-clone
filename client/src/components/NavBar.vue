@@ -98,7 +98,6 @@ export default {
 }
 .router-link-exact-active {
   border-left: 3px solid var(--nav-menu-b-l);
-  background-color: #212533;
   margin-left: -1px;
   font-weight: bold;
 }

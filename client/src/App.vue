@@ -78,5 +78,6 @@ body {
   justify-content: center;
   background-color: var(--bg-color);
   color: #c5c5c6;
+  overflow-x: hidden;
 }
 </style>

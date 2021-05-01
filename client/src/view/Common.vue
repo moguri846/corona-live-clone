@@ -2,6 +2,7 @@
   <div class="wrap">
     <NavBar></NavBar>
     <div>
+      <HeaderMenu></HeaderMenu>
       <slot name="header"></slot>
       <slot name="content"></slot>
       <div class="footer">
@@ -13,11 +14,13 @@
 
 <script>
 import NavBar from '../components/NavBar.vue';
+import HeaderMenu from '../components/HeaderMenu.vue';
 import Footer from '../components/Footer.vue';
 
 export default {
   components: {
     NavBar,
+    HeaderMenu,
     Footer,
   },
 };
@@ -27,5 +30,18 @@ export default {
 .wrap {
   display: flex;
   margin-top: 40px;
+}
+.header,
+.content,
+.footer {
+  width: 510px;
+}
+/*
+  반응형
+*/
+@media screen and (max-width: 1000px) {
+  .menu {
+    display: none;
+  }
 }
 </style>
