@@ -64,4 +64,39 @@ export default {};
 .today > div {
   border: 1px solid var(--border-color);
 }
+/* 
+  반응형
+*/
+/* 모바일 */
+@media screen and (max-width: 480px) {
+  .today {
+    width: 85%;
+    margin: 0px auto 20px;
+    border: 1px solid #191f2c;
+  }
+  .today > div {
+    border: 1px solid #191f2c;
+  }
+}
+@media screen and (max-width: 375px) and (min-width: 321px) {
+  .today {
+    width: 75%;
+    margin: 0px auto 20px;
+    border: 1px solid #191f2c;
+  }
+  .today > div {
+    border: 1px solid #191f2c;
+    justify-content: space-evenly;
+  }
+}
+@media screen and (max-width: 320px) {
+  .today {
+    width: 65%;
+    margin: 0px auto 20px;
+    border: 1px solid #191f2c;
+  }
+  .today > div {
+    border: 1px solid #191f2c;
+  }
+}
 </style>

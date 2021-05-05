@@ -55,9 +55,7 @@ export default {
 <style scoped>
 .corona-item-list {
   width: 458px;
-  border: 1px solid #474b55;
   border-radius: 12px;
-  background-color: #191f2c;
   margin-bottom: 20px;
 }
 
@@ -112,5 +110,23 @@ body > div > div:nth-child(2) > div > div {
 .content > div > .select-map > .active {
   background-color: var(--active-bg-color);
   border: 1px solid var(--border-color);
+}
+/*
+  반응형
+*/
+/* 모바일 */
+@media screen and (max-width: 480px) {
+  .corona-item-list {
+    width: 70%;
+    margin: 0 auto 20px;
+  }
+  body > div > div:nth-child(2) > div > div {
+    border: 1px solid #191f2c;
+  }
+}
+@media screen and (max-width: 320px) {
+  .corona-item-list {
+    width: 60%;
+  }
 }
 </style>

@@ -56,4 +56,26 @@ export default {};
   color: var(--text-color);
   border: 1px solid var(--border-color);
 }
+/* 
+  반응형
+*/
+/* 모바일 */
+@media screen and (max-width: 480px) {
+  .thank-you {
+    border: 1px solid #191f2c;
+  }
+  .thank-you > .thank-you-for-your-help {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 375px) and (min-width: 321px) {
+  .thank-you > .thank-you-for-your-help {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .thank-you > .thank-you-for-your-help {
+    font-size: 12px;
+  }
+}
 </style>

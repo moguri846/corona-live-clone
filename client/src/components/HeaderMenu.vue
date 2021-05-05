@@ -1,7 +1,7 @@
 <template>
   <div class="header-menu">
     <div class="header-menu-top">
-      <i class="fas fa-redo-alt"></i>
+      <i class="fas fa-paper-plane"></i>
       <div class="header-menu-title">CORONA<span>LIVE</span>CLONE</div>
       <i class="fas fa-bars"></i>
     </div>
@@ -50,7 +50,7 @@ a {
   padding: 8px;
 }
 .router-link-exact-active {
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid var(--text-color);
 }
 /*
   반응형
@@ -63,6 +63,21 @@ a {
 @media screen and (min-width: 1001px) {
   .header-menu {
     display: none;
+  }
+}
+/* 모바일 */
+@media screen and (max-width: 480px) and (min-width: 321px) {
+  .header-menu {
+    width: 80%;
+    margin: 0 auto 20px;
+    border: 1px solid #191f2c;
+  }
+}
+@media screen and (max-width: 320px) {
+  .header-menu {
+    width: 70%;
+    margin: 0 auto 20px;
+    border: 1px solid #191f2c;
   }
 }
 </style>

@@ -24,10 +24,10 @@
       <CoronaItemList :loading="worldCoronaListLoading">
         <div slot="item-list" class="item-list">
           <div class="description">
-            <div style="left: 40px">국가</div>
-            <div style="left: 125px">확진자</div>
-            <div style="left: 200px">사망자</div>
-            <div style="left: 240px">확진률 대비 사망률</div>
+            <div class="country">국가</div>
+            <div class="world-decide">확진자</div>
+            <div class="world-death">사망자</div>
+            <div class="nat-death-rate">확진률 대비 사망률</div>
           </div>
           <ul>
             <li v-for="(item, index) in worldCoronaList" :key="index" class="item">
@@ -123,18 +123,42 @@ export default {
   width: 438px;
   padding: 22px 35px;
 }
+.item-list {
+  width: 400px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 10px;
+  padding-left: 0px;
+  padding-right: 20px;
+  cursor: pointer;
+}
 .list {
   margin-bottom: 20px;
 }
 .description {
   display: flex;
+  position: relative;
   margin-bottom: 10px;
 }
 .description > div {
   position: relative;
   font-size: 12px;
 }
+.description > .country {
+  left: 40px;
+}
+.description > .world-decide {
+  left: 125px;
+}
+.description > .world-death {
+  left: 200px;
+}
+.description > .nat-death-rate {
+  left: 235px;
+}
 .item {
+  width: 450px;
+  height: 48px;
   display: flex;
   justify-content: space-around;
   text-align: center;
@@ -146,6 +170,10 @@ export default {
   border-radius: 12px;
   margin-right: 5px;
 }
+.item > div:nth-child(1) {
+  position: sticky;
+  left: 0px;
+}
 .item > div:nth-child(4) {
   margin-right: 0px;
 }
@@ -155,7 +183,6 @@ export default {
 .total {
   justify-content: space-evenly;
 }
-
 .total > div > div:nth-child(3) {
   display: flex;
   align-items: center;
@@ -164,6 +191,7 @@ i {
   margin-left: 3px;
   font-size: 11px;
 }
+
 /*
   light mode
 */
@@ -177,5 +205,50 @@ i {
 .content > div > .item-list > ul > li:nth-child(even) > div {
   background-color: var(--list-even-color);
   border: 1px solid var(--list-even-color);
+}
+/*
+  반응형
+*/
+@media screen and (max-width: 480px) {
+  .corona-item-list {
+    width: 70%;
+    margin: 0 auto 20px;
+  }
+  .item-list {
+    width: 95%;
+  }
+
+  .description > .country {
+    left: 43px;
+  }
+  .description > .world-decide {
+    left: 135px;
+  }
+  .description > .world-death {
+    left: 215px;
+  }
+  .description > .nat-death-rate {
+    left: 265px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .corona-item-list {
+    width: 55%;
+  }
+  .item-list {
+    width: 90%;
+  }
+  .description > .country {
+    left: 42px;
+  }
+  .description > .world-decide {
+    left: 128px;
+  }
+  .description > .world-death {
+    left: 205px;
+  }
+  .description > .nat-death-rate {
+    left: 250px;
+  }
 }
 </style>

@@ -88,4 +88,29 @@ export default {
   background-color: var(--social-span-color);
   border: 1px solid var(--social-span-color);
 }
+/* 
+  반응형
+*/
+@media screen and (max-width: 480px) {
+  .title {
+    width: 80%;
+    margin: 0 auto 20px;
+    border: 1px solid #191f2c;
+  }
+  .title > h1,
+  .title > h3 {
+    margin-left: 20px;
+  }
+}
+@media screen and (max-width: 375px) and (min-width: 320px) {
+  .title {
+    width: 70%;
+    margin: 0 auto 20px;
+    border: 1px solid #191f2c;
+  }
+  .title > h1,
+  .title > h3 {
+    margin-left: 20px;
+  }
+}
 </style>

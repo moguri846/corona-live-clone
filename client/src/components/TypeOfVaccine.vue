@@ -231,4 +231,34 @@ export default {
 .vaccine > div > div > div > div:nth-child(2) {
   color: var(--text-color);
 }
+/*
+  반응형
+*/
+/* 모바일 */
+@media screen and (max-width: 480px) {
+  .vaccine {
+    width: 75%;
+    margin: 0 auto 20px;
+    border: 1px solid #191f2c;
+  }
+}
+@media screen and (max-width: 375px) and (min-width: 321px) {
+  .vaccine {
+    width: 65%;
+    margin: 0 auto 20px;
+    border: 1px solid #191f2c;
+  }
+}
+@media screen and (max-width: 320px) {
+  .vaccine {
+    width: 55%;
+    margin: 0 auto 20px;
+    border: 1px solid #191f2c;
+  }
+  .type-of-vaccine > div {
+    width: max-content;
+    padding: 0px 10px;
+    margin: 0 auto;
+  }
+}
 </style>

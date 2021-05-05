@@ -205,9 +205,9 @@ export default {
   font-size: 12px;
 }
 .item {
-  display: flex;
   width: 800px;
   height: 48px;
+  display: flex;
   padding-right: 10px;
   margin-bottom: 10px;
 }
@@ -263,5 +263,25 @@ i {
 .content > div > .item-list > ul > li:nth-child(even) > div {
   background-color: var(--list-even-color);
   border: 1px solid var(--list-even-color);
+}
+/* 
+  반응형
+*/
+/* 모바일 */
+@media screen and (max-width: 480px) {
+  .total {
+    justify-content: space-evenly;
+  }
+  .item-list {
+    width: 94%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .total {
+    justify-content: space-evenly;
+  }
+  .item-list {
+    width: 93%;
+  }
 }
 </style>

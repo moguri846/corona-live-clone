@@ -29,4 +29,13 @@ div {
 div > span {
   font-weight: bold;
 }
+/* 
+  반응형
+*/
+/* 모바일 */
+@media screen and (max-width: 480px) {
+  div {
+    border: 1px solid #191f2c;
+  }
+}
 </style>
