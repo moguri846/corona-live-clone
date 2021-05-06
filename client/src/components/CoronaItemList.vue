@@ -117,11 +117,20 @@ body > div > div:nth-child(2) > div > div {
 /* 모바일 */
 @media screen and (max-width: 480px) {
   .corona-item-list {
-    width: 70%;
+    width: 75%;
     margin: 0 auto 20px;
   }
   body > div > div:nth-child(2) > div > div {
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
+  }
+}
+@media screen and (max-width: 375px) and (min-width: 321px) {
+  .corona-item-list {
+    width: 65%;
+    margin: 0 auto 20px;
+  }
+  body > div > div:nth-child(2) > div > div {
+    border: 1px solid var(--border-color);
   }
 }
 @media screen and (max-width: 320px) {

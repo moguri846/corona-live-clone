@@ -72,20 +72,20 @@ export default {};
   .today {
     width: 85%;
     margin: 0px auto 20px;
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
   }
   .today > div {
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
   }
 }
 @media screen and (max-width: 375px) and (min-width: 321px) {
   .today {
     width: 75%;
     margin: 0px auto 20px;
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
   }
   .today > div {
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
     justify-content: space-evenly;
   }
 }
@@ -93,10 +93,10 @@ export default {};
   .today {
     width: 65%;
     margin: 0px auto 20px;
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
   }
   .today > div {
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
   }
 }
 </style>

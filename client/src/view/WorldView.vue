@@ -121,15 +121,12 @@ export default {
 <style scoped>
 .corona-item-list {
   width: 438px;
-  padding: 22px 35px;
+  padding: 22px 40px 22px 30px;
 }
 .item-list {
-  width: 400px;
+  width: 450px;
   overflow-y: hidden;
   overflow-x: scroll;
-  padding: 10px;
-  padding-left: 0px;
-  padding-right: 20px;
   cursor: pointer;
 }
 .list {

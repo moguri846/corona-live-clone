@@ -35,7 +35,7 @@ div > span {
 /* 모바일 */
 @media screen and (max-width: 480px) {
   div {
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
   }
 }
 </style>

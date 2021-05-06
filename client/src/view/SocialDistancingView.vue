@@ -95,7 +95,7 @@ export default {
   .title {
     width: 80%;
     margin: 0 auto 20px;
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
   }
   .title > h1,
   .title > h3 {
@@ -106,7 +106,7 @@ export default {
   .title {
     width: 70%;
     margin: 0 auto 20px;
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
   }
   .title > h1,
   .title > h3 {

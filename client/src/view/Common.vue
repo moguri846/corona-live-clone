@@ -44,4 +44,12 @@ export default {
     display: none;
   }
 }
+@media screen and (max-width: 480px) {
+  .wrap {
+    margin: 0px;
+  }
+  .menu {
+    display: none;
+  }
+}
 </style>

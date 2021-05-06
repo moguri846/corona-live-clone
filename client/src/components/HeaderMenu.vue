@@ -44,10 +44,10 @@ export default {};
 .header-menu-bottom {
   display: flex;
   justify-content: space-around;
-  color: var(--text-color);
 }
 a {
   padding: 8px;
+  color: var(--text-color);
 }
 .router-link-exact-active {
   border-bottom: 2px solid var(--text-color);
@@ -70,14 +70,14 @@ a {
   .header-menu {
     width: 80%;
     margin: 0 auto 20px;
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
   }
 }
 @media screen and (max-width: 320px) {
   .header-menu {
     width: 70%;
     margin: 0 auto 20px;
-    border: 1px solid #191f2c;
+    border: 1px solid var(--border-color);
   }
 }
 </style>
