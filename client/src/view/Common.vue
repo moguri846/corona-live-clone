@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <NavBar></NavBar>
-    <div>
+    <div class="container">
       <HeaderMenu></HeaderMenu>
       <slot name="header"></slot>
       <slot name="content"></slot>
@@ -31,11 +31,10 @@ export default {
   display: flex;
   margin-top: 40px;
 }
-.header,
-.content,
-.footer {
+.container {
   width: 510px;
 }
+
 /*
   반응형
 */
