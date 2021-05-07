@@ -125,8 +125,7 @@ export default {
 }
 .item-list {
   width: 450px;
-  overflow-y: hidden;
-  overflow-x: scroll;
+  overflow: hidden;
   cursor: pointer;
 }
 .list {
@@ -210,30 +209,33 @@ i {
   .corona-item-list {
     width: 70%;
     margin: 0 auto 20px;
+    padding: 22px 40px 22px 60px;
   }
   .item-list {
     width: 95%;
+    overflow-x: scroll;
   }
 
   .description > .country {
     left: 43px;
   }
   .description > .world-decide {
-    left: 135px;
+    left: 130px;
   }
   .description > .world-death {
-    left: 215px;
+    left: 206px;
   }
   .description > .nat-death-rate {
-    left: 265px;
+    left: 248px;
   }
 }
 @media screen and (max-width: 320px) {
   .corona-item-list {
-    width: 55%;
+    width: 60%;
   }
   .item-list {
-    width: 90%;
+    width: 93%;
+    overflow-x: scroll;
   }
   .description > .country {
     left: 42px;

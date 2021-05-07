@@ -15,6 +15,7 @@ html {
   --active-border-color: #555862;
   --active-text-color: #cfcfcf;
   --active-bg-color: #2e323e;
+  --mobile-border-color: #191f2c;
 
   --bg-color: #101421;
   --div-color: #191f2c;
@@ -47,6 +48,7 @@ html.light {
   --active-border-color: #f0f0f1;
   --active-text-color: #545b60;
   --active-bg-color: #ffffff;
+  --mobile-border-color: #ffffff;
 
   --bg-color: #fafafa;
   --div-color: #ffffff;
@@ -73,6 +75,18 @@ html.light {
   /* social distancing view */
   --social-span-color: #eff2ff;
 }
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+html::-webkit-scrollbar-thumb {
+  background-color: #656970;
+  border-radius: 10px;
+}
+html::-webkit-scrollbar-track {
+  background-color: #191f2c;
+}
+
 body {
   display: flex;
   justify-content: center;

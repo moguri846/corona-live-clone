@@ -190,10 +190,18 @@ export default {
   width: 440px;
   overflow-y: hidden;
   overflow-x: scroll;
-  padding: 10px;
-  padding-left: 0px;
-  padding-right: 20px;
+  padding: 10px 20px 0px 0px;
   cursor: pointer;
+}
+.item-list::-webkit-scrollbar {
+  height: 8px;
+}
+.item-list::-webkit-scrollbar-thumb {
+  background-color: #656970;
+  border-radius: 10px;
+}
+.item-list::-webkit-scrollbar-track {
+  background-color: #191f2c;
 }
 .description {
   width: max-content;
