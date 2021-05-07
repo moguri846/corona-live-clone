@@ -62,7 +62,7 @@ export default {};
 /* 모바일 */
 @media screen and (max-width: 480px) {
   .thank-you {
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
   .thank-you > .thank-you-for-your-help {
     font-size: 15px;

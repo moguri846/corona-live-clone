@@ -64,7 +64,7 @@ export default {};
 .today > div {
   border: 1px solid var(--border-color);
 }
-/* 
+/*
   반응형
 */
 /* 모바일 */
@@ -72,20 +72,20 @@ export default {};
   .today {
     width: 85%;
     margin: 0px auto 20px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
   .today > div {
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
 }
 @media screen and (max-width: 375px) and (min-width: 321px) {
   .today {
     width: 75%;
     margin: 0px auto 20px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
   .today > div {
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
     justify-content: space-evenly;
   }
 }
@@ -93,10 +93,10 @@ export default {};
   .today {
     width: 65%;
     margin: 0px auto 20px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
   .today > div {
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
 }
 </style>

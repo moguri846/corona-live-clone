@@ -74,8 +74,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-.chartjs-render-monitor {
-  width: 510px;
-}
-</style>
+<style scoped></style>

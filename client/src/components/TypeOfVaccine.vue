@@ -239,21 +239,21 @@ export default {
   .vaccine {
     width: 75%;
     margin: 0 auto 20px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
 }
 @media screen and (max-width: 375px) and (min-width: 321px) {
   .vaccine {
     width: 65%;
     margin: 0 auto 20px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
 }
 @media screen and (max-width: 320px) {
   .vaccine {
     width: 55%;
     margin: 0 auto 20px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
   .type-of-vaccine > div {
     width: max-content;

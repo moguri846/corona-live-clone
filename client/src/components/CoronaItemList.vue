@@ -121,7 +121,7 @@ body > div > div:nth-child(2) > div > div {
     margin: 0 auto 20px;
   }
   body > div > div:nth-child(2) > div > div {
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
 }
 @media screen and (max-width: 375px) and (min-width: 321px) {
@@ -130,7 +130,7 @@ body > div > div:nth-child(2) > div > div {
     margin: 0 auto 20px;
   }
   body > div > div:nth-child(2) > div > div {
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
 }
 @media screen and (max-width: 320px) {

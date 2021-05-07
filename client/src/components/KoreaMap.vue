@@ -220,6 +220,11 @@ i {
     font-size: 13px;
   }
 }
+@media screen and (max-width: 321px) {
+  .korea-map > img {
+    width: 390px;
+  }
+}
 @media screen and (max-width: 320px) {
   .korea-map {
     font-size: 11px;

@@ -106,14 +106,14 @@ h3 {
   .total {
     width: 80%;
     margin: 0 auto 20px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
 }
 @media screen and (max-width: 320px) {
   .total {
     width: 70%;
     margin: 0 auto 20px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--mobile-border-color);
   }
 }
 </style>
