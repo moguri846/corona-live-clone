@@ -16,6 +16,8 @@ html {
   --active-text-color: #cfcfcf;
   --active-bg-color: #2e323e;
   --mobile-border-color: #191f2c;
+  --scrollbar-thumb: #656970;
+  --scrollbar-track: #191f2c;
 
   --bg-color: #101421;
   --div-color: #191f2c;
@@ -49,6 +51,8 @@ html.light {
   --active-text-color: #545b60;
   --active-bg-color: #ffffff;
   --mobile-border-color: #ffffff;
+  --scrollbar-thumb: #d2d2d2;
+  --scrollbar-track: #ffffff;
 
   --bg-color: #fafafa;
   --div-color: #ffffff;
@@ -80,11 +84,11 @@ html::-webkit-scrollbar {
   width: 8px;
 }
 html::-webkit-scrollbar-thumb {
-  background-color: #656970;
+  background-color: var(--scrollbar-thumb);
   border-radius: 10px;
 }
 html::-webkit-scrollbar-track {
-  background-color: #191f2c;
+  background-color: var(--scrollbar-track);
 }
 
 body {
