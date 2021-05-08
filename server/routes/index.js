@@ -174,10 +174,10 @@ router.get('/totalVaccinationInfo', (req, res) => {
       const list = JSON.parse(xmlToJson).response.body.items.item;
 
       const totalVaccineInfo = {
-        toDayFirst: list[0].firstCnt._text,
-        toDaySecond: list[0].secondCnt._text,
-        totalFirst: list[2].firstCnt._text,
-        totalSecond: list[2].secondCnt._text,
+        firstVaccine: list[0].firstCnt._text,
+        secondVaccine: list[0].secondCnt._text,
+        totalFirstVaccine: list[1].firstCnt._text,
+        totalSecondVaccine: list[1].secondCnt._text,
       };
       return res.json({ success: true, body: totalVaccineInfo });
     })
