@@ -30,7 +30,7 @@
         <ClipSpinner></ClipSpinner>
       </template>
       <template v-else>
-        <BarChart :chartData="aWeekAgoCoronaInfo"></BarChart>
+        <BarChart :chartData="aWeekAgoCoronaInfo" class="bar-chart"></BarChart>
       </template>
       <AddChart></AddChart>
       <CoronaItemList :loading="cityCoronaListLoading">
@@ -172,7 +172,7 @@ export default {
 .total {
   justify-content: space-between;
 }
-.content > div:nth-child(1) {
+.bar-chart {
   border: 1px solid var(--border-color);
   border-radius: 12px;
   margin-bottom: 20px;
@@ -184,10 +184,10 @@ export default {
   padding: 3px 8px 3px 10px;
 }
 .corona-item-list {
-  padding: 12px 25px;
+  padding: 12px 5%;
 }
 .item-list {
-  width: 440px;
+  width: 95%;
   overflow-y: hidden;
   overflow-x: scroll;
   padding: 10px 20px 0px 0px;
@@ -197,11 +197,11 @@ export default {
   height: 8px;
 }
 .item-list::-webkit-scrollbar-thumb {
-  background-color: #656970;
+  background-color: var(--scrollbar-thumb);
   border-radius: 10px;
 }
 .item-list::-webkit-scrollbar-track {
-  background-color: #191f2c;
+  background-color: var(--scrollbar-track);
 }
 .description {
   width: max-content;
@@ -272,24 +272,24 @@ i {
   background-color: var(--list-even-color);
   border: 1px solid var(--list-even-color);
 }
-/* 
+/*
   반응형
 */
 /* 모바일 */
-@media screen and (max-width: 480px) {
-  .total {
-    justify-content: space-evenly;
-  }
+@media screen and (max-width: 510px) {
   .item-list {
-    width: 94%;
+    width: 100%;
+    padding: 0px;
+  }
+  .bar-chart {
+    border: 1px solid var(--mobile-border-color);
+    border-radius: 0px;
   }
 }
-@media screen and (max-width: 320px) {
-  .total {
-    justify-content: space-evenly;
-  }
-  .item-list {
-    width: 93%;
+@media screen and (max-width: 480px) {
+  .bar-chart {
+    border: 1px solid var(--mobile-border-color);
+    border-radius: 0px;
   }
 }
 </style>

@@ -175,9 +175,9 @@ export default {
 
 <style scoped>
 .vaccine {
-  width: 458px;
+  width: 89.8%;
   border: 1px solid #474b55;
-  padding: 25px;
+  padding: 4.9%;
   border-radius: 12px;
   background-color: #191f2c;
   margin-bottom: 20px;
@@ -235,30 +235,13 @@ export default {
   반응형
 */
 /* 모바일 */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 410px) {
   .vaccine {
-    width: 75%;
-    margin: 0 auto 20px;
     border: 1px solid var(--mobile-border-color);
-  }
-}
-@media screen and (max-width: 375px) and (min-width: 321px) {
-  .vaccine {
-    width: 65%;
-    margin: 0 auto 20px;
-    border: 1px solid var(--mobile-border-color);
-  }
-}
-@media screen and (max-width: 320px) {
-  .vaccine {
-    width: 55%;
-    margin: 0 auto 20px;
-    border: 1px solid var(--mobile-border-color);
+    border-radius: 0px;
   }
   .type-of-vaccine > div {
-    width: max-content;
-    padding: 0px 10px;
-    margin: 0 auto;
+    font-size: 10px;
   }
 }
 </style>

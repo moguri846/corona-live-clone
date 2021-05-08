@@ -14,7 +14,7 @@ export default {};
 
 <style scoped>
 .thank-you {
-  width: 508px;
+  width: 99.6%;
   height: 100px;
   position: relative;
   display: flex;
@@ -63,19 +63,25 @@ export default {};
 @media screen and (max-width: 480px) {
   .thank-you {
     border: 1px solid var(--mobile-border-color);
+    border-radius: 0px;
   }
   .thank-you > .thank-you-for-your-help {
     font-size: 15px;
   }
 }
-@media screen and (max-width: 375px) and (min-width: 321px) {
+@media screen and (max-width: 390px) {
   .thank-you > .thank-you-for-your-help {
     font-size: 13px;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 340px) {
   .thank-you > .thank-you-for-your-help {
-    font-size: 12px;
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 290px) {
+  .thank-you > .thank-you-for-your-help {
+    font-size: 10px;
   }
 }
 </style>

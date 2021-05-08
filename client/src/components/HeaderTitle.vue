@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot name="title"></slot>
+    <slot name="title" class="title"></slot>
   </div>
 </template>
 
@@ -10,8 +10,8 @@ export default {};
 
 <style scoped>
 .title {
-  width: 468px;
-  padding: 20px;
+  width: 91.78%;
+  padding: 3.92%;
   border-radius: 12px;
   border: 1px solid #474b55;
   background-color: #191f2c;

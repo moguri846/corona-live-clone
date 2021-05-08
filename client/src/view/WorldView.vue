@@ -120,8 +120,8 @@ export default {
 
 <style scoped>
 .corona-item-list {
-  width: 438px;
-  padding: 22px 40px 22px 30px;
+  width: 85.88%;
+  padding: 22px 7.84% 22px 5.88%;
 }
 .item-list {
   width: 450px;
@@ -141,16 +141,16 @@ export default {
   font-size: 12px;
 }
 .description > .country {
-  left: 40px;
+  left: 43px;
 }
 .description > .world-decide {
-  left: 125px;
+  left: 128px;
 }
 .description > .world-death {
-  left: 200px;
+  left: 205px;
 }
 .description > .nat-death-rate {
-  left: 235px;
+  left: 248px;
 }
 .item {
   width: 450px;
@@ -207,17 +207,26 @@ i {
 */
 @media screen and (max-width: 480px) {
   .corona-item-list {
-    width: 70%;
-    margin: 0 auto 20px;
-    padding: 22px 40px 22px 60px;
+    border: 1px solid var(--mobile-border-color);
+    border-radius: 0px;
   }
   .item-list {
-    width: 95%;
+    width: 100%;
     overflow-x: scroll;
+  }
+  .item-list::-webkit-scrollbar {
+    height: 8px;
+  }
+  .item-list::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 10px;
+  }
+  .item-list::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track);
   }
 
   .description > .country {
-    left: 43px;
+    left: 45px;
   }
   .description > .world-decide {
     left: 130px;
@@ -230,13 +239,6 @@ i {
   }
 }
 @media screen and (max-width: 320px) {
-  .corona-item-list {
-    width: 60%;
-  }
-  .item-list {
-    width: 93%;
-    overflow-x: scroll;
-  }
   .description > .country {
     left: 42px;
   }

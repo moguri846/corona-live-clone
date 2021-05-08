@@ -28,13 +28,24 @@ export default {
 
 <style scoped>
 .wrap {
+  width: 100%;
+  max-width: 840px;
   display: flex;
   margin-top: 40px;
 }
 .container {
-  width: 510px;
+  width: 100%;
+  max-width: 510px;
+  margin: 0 auto;
 }
-
+.header,
+.content,
+.footer {
+  width: 100%;
+}
+.header-menu {
+  display: none;
+}
 /*
   반응형
 */
@@ -42,13 +53,14 @@ export default {
   .menu {
     display: none;
   }
+  .header-menu {
+    display: block;
+  }
 }
+/* 모바일 */
 @media screen and (max-width: 480px) {
   .wrap {
     margin: 0px;
-  }
-  .menu {
-    display: none;
   }
 }
 </style>

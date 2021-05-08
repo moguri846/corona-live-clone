@@ -19,7 +19,6 @@
         <div>vs 1달전 ㅇㅇ</div>
       </div>
     </div>
-    <h1>모르겠어요 ㅠㅠ</h1>
   </div>
 </template>
 
@@ -29,7 +28,7 @@ export default {};
 
 <style scoped>
 .today {
-  width: 508px;
+  width: 99.6%;
   border: 1px solid #474b55;
   border-radius: 12px;
   height: 142px;
@@ -49,10 +48,6 @@ export default {};
 .today > div > div:nth-child(1) > div {
   font-size: 30px;
 }
-.today > h1 {
-  text-align: center;
-  font-size: 40px;
-}
 /*
   light mode
 */
@@ -70,33 +65,18 @@ export default {};
 /* 모바일 */
 @media screen and (max-width: 480px) {
   .today {
-    width: 85%;
-    margin: 0px auto 20px;
     border: 1px solid var(--mobile-border-color);
+    border-radius: 0px;
+    font-size: 15px;
   }
   .today > div {
     border: 1px solid var(--mobile-border-color);
+    border-radius: 0px;
   }
 }
-@media screen and (max-width: 375px) and (min-width: 321px) {
+@media screen and (max-width: 300px) {
   .today {
-    width: 75%;
-    margin: 0px auto 20px;
-    border: 1px solid var(--mobile-border-color);
-  }
-  .today > div {
-    border: 1px solid var(--mobile-border-color);
-    justify-content: space-evenly;
-  }
-}
-@media screen and (max-width: 320px) {
-  .today {
-    width: 65%;
-    margin: 0px auto 20px;
-    border: 1px solid var(--mobile-border-color);
-  }
-  .today > div {
-    border: 1px solid var(--mobile-border-color);
+    font-size: 12px;
   }
 }
 </style>

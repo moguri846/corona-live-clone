@@ -2,31 +2,15 @@
   <Common>
     <div slot="header" class="header">
       <Total :loading="loading">
-        <div slot="toDayVaccine" class="toDayVaccine">
-          <h1>전일 접종</h1>
-          <div>
-            <div class="toDayVaccine-1">
-              <h3>1차 접종</h3>
-              {{ totalVaccinationInfo.toDayFirst | makeComma }}
-            </div>
-            <div class="toDayVaccine-2">
-              <h3>2차 접종</h3>
-              {{ totalVaccinationInfo.toDaySecond | makeComma }}
-            </div>
-          </div>
+        <div slot="firstVaccine" class="firstVaccine">
+          <h3>1차 접종</h3>
+          <div>{{ totalVaccinationInfo.totalFirstVaccine | makeComma }}</div>
+          <div>{{ totalVaccinationInfo.firstVaccine | makeComma }}<i class="fas fa-arrow-up"></i></div>
         </div>
-        <div slot="totalVaccine" class="totalVaccine">
-          <h1>누적 접종</h1>
-          <div>
-            <div class="totalVaccine-1">
-              <h3>1차 접종</h3>
-              {{ totalVaccinationInfo.totalFirst | makeComma }}
-            </div>
-            <div class="totalVaccine-2">
-              <h3>2차 접종</h3>
-              {{ totalVaccinationInfo.totalSecond | makeComma }}
-            </div>
-          </div>
+        <div slot="secondVaccine" class="secondVaccine">
+          <h3>2차 접종</h3>
+          <div>{{ totalVaccinationInfo.totalSecondVaccine | makeComma }}</div>
+          <div>{{ totalVaccinationInfo.secondVaccine | makeComma }}<i class="fas fa-arrow-up"></i></div>
         </div>
       </Total>
     </div>
@@ -97,6 +81,11 @@ export default {
 }
 .totalVaccine {
   color: #5673eb;
+}
+i {
+  margin-left: 3px;
+  margin-top: 2px;
+  font-size: 12px;
 }
 /*
   light mode

@@ -54,7 +54,7 @@ export default {
 
 <style scoped>
 .corona-item-list {
-  width: 458px;
+  width: 89.8%;
   border-radius: 12px;
   margin-bottom: 20px;
 }
@@ -98,7 +98,7 @@ i {
 /*
   light mode
 */
-body > div > div:nth-child(2) > div > div {
+.corona-item-list {
   background-color: var(--div-color);
   border: 1px solid var(--border-color);
 }
@@ -117,25 +117,8 @@ body > div > div:nth-child(2) > div > div {
 /* 모바일 */
 @media screen and (max-width: 480px) {
   .corona-item-list {
-    width: 75%;
-    margin: 0 auto 20px;
-  }
-  body > div > div:nth-child(2) > div > div {
     border: 1px solid var(--mobile-border-color);
-  }
-}
-@media screen and (max-width: 375px) and (min-width: 321px) {
-  .corona-item-list {
-    width: 65%;
-    margin: 0 auto 20px;
-  }
-  body > div > div:nth-child(2) > div > div {
-    border: 1px solid var(--mobile-border-color);
-  }
-}
-@media screen and (max-width: 320px) {
-  .corona-item-list {
-    width: 60%;
+    border-radius: 0px;
   }
 }
 </style>

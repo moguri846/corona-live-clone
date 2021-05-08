@@ -146,7 +146,7 @@ i {
   }
   .Seoul {
     top: 90px;
-    left: 150px;
+    left: 140px;
   }
   .Gyeonggi-do {
     top: 30px;

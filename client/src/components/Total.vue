@@ -8,8 +8,8 @@
       <slot name="death"></slot>
       <slot name="clear"></slot>
       <slot name="exam"></slot>
-      <slot name="toDayVaccine"></slot>
-      <slot name="totalVaccine"></slot>
+      <slot name="firstVaccine"></slot>
+      <slot name="secondVaccine"></slot>
     </template>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 .total {
-  width: 468px;
+  width: 91.76%;
   display: flex;
   margin: 0px;
   padding: 20px;
@@ -41,6 +41,7 @@ export default {
 }
 .total > div > div:nth-child(2) {
   font-weight: bold;
+  font-size: 18px;
   padding: 5px;
 }
 h3 {
@@ -87,6 +88,21 @@ h3 {
 .v-spinner {
   margin: 0 auto;
 }
+.firstVaccine > div {
+  color: #188a17;
+}
+.firstVaccine > div:nth-child(3) {
+  color: #188a17;
+  background-color: var(--clear-color);
+}
+.secondVaccine > div {
+  color: #4173eb;
+  margin-left: 7px;
+}
+.secondVaccine > div:nth-child(3) {
+  color: #4173eb;
+  background-color: var(--exam-color);
+}
 /*
  light mode
 */
@@ -102,18 +118,17 @@ h3 {
 /*
   반응형
 */
+/* 모바일 */
 @media screen and (max-width: 480px) {
   .total {
-    width: 80%;
-    margin: 0 auto 20px;
     border: 1px solid var(--mobile-border-color);
+    border-radius: 0px;
+    padding-left: 15px;
   }
 }
 @media screen and (max-width: 320px) {
   .total {
-    width: 70%;
-    margin: 0 auto 20px;
-    border: 1px solid var(--mobile-border-color);
+    padding-left: 12px;
   }
 }
 </style>

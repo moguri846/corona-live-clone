@@ -91,26 +91,16 @@ export default {
 /* 
   반응형
 */
+/* 모바일 */
 @media screen and (max-width: 480px) {
   .title {
-    width: 80%;
-    margin: 0 auto 20px;
-    border: 1px solid var(--border-color);
-  }
-  .title > h1,
-  .title > h3 {
-    margin-left: 20px;
+    border: 1px solid var(--mobile-border-color);
+    border-radius: 0px;
   }
 }
-@media screen and (max-width: 375px) and (min-width: 320px) {
-  .title {
-    width: 70%;
-    margin: 0 auto 20px;
-    border: 1px solid var(--border-color);
-  }
-  .title > h1,
-  .title > h3 {
-    margin-left: 20px;
+@media screen and (max-width: 320px) {
+  .title > h1 {
+    font-size: 22px;
   }
 }
 </style>

@@ -20,7 +20,7 @@ export default {};
 
 <style scoped>
 .header-menu {
-  width: 488px;
+  width: 95.68%;
   margin-bottom: 20px;
   border-radius: 12px;
   padding: 10px;
@@ -31,10 +31,11 @@ export default {};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 30px 20px;
+  margin: 10px 6% 20px 5%;
 }
 .header-menu-title {
   font-size: 20px;
+  margin: 0px 5px;
   font-weight: bold;
 }
 .header-menu-title > span {
@@ -55,29 +56,11 @@ a {
 /*
   반응형
 */
-@media screen and (max-width: 1000px) {
-  .header-menu {
-    display: block;
-  }
-}
-@media screen and (min-width: 1001px) {
-  .header-menu {
-    display: none;
-  }
-}
 /* 모바일 */
-@media screen and (max-width: 480px) and (min-width: 321px) {
+@media screen and (max-width: 480px) {
   .header-menu {
-    width: 80%;
-    margin: 0 auto 20px;
     border: 1px solid var(--mobile-border-color);
-  }
-}
-@media screen and (max-width: 320px) {
-  .header-menu {
-    width: 70%;
-    margin: 0 auto 20px;
-    border: 1px solid var(--mobile-border-color);
+    border-radius: 0px;
   }
 }
 </style>
