@@ -15,6 +15,7 @@ export const store = new Vuex.Store({
     aWeekAgoCoronaInfo: [],
     koreaIncDecCoronaInfo: [],
     totalWorldCoronaInfo: [],
+    disasterCharactersList: [],
   },
   actions,
   mutations,

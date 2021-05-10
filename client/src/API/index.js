@@ -34,6 +34,10 @@ const getTotalWorldCoronaInfo = () => {
   return axios.get('/api/corona/totalWorldCoronaInfo');
 };
 
+const getDisasterCharactersList = () => {
+  return axios.get('/api/corona/disasterCharactersList');
+};
+
 export {
   getCityCoronaList,
   getTotalCoronaInfo,
@@ -42,4 +46,5 @@ export {
   getAWeekAgoCoronaInfo,
   getKoreaIncDecCoronaInfo,
   getTotalWorldCoronaInfo,
+  getDisasterCharactersList,
 };

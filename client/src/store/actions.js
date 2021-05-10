@@ -6,6 +6,7 @@ import {
   getAWeekAgoCoronaInfo,
   getKoreaIncDecCoronaInfo,
   getTotalWorldCoronaInfo,
+  getDisasterCharactersList,
 } from '../API/index.js';
 import {
   SET_CITY_CORONA_LIST,
@@ -15,6 +16,7 @@ import {
   SET_A_WEEK_AGO_CORONA_INFO,
   SET_KOREA_INC_DEC_CORONA_INFO,
   SET_TOTAL_WORLD_CORONA_INFO,
+  SET_DISASTER_CHARACTERS_LIST,
 } from './type.js';
 
 export default {
@@ -61,6 +63,12 @@ export default {
   GET_TOTAL_WORLD_CORONA_INFO({ commit }) {
     getTotalWorldCoronaInfo().then(({ data }) => {
       commit(SET_TOTAL_WORLD_CORONA_INFO, data.body);
+    });
+  },
+  GET_DISASTER_CHARACTERS_LIST({ commit }) {
+    getDisasterCharactersList().then(({ data }) => {
+      console.log('actions', data.body);
+      commit(SET_DISASTER_CHARACTERS_LIST, data.body);
     });
   },
 };

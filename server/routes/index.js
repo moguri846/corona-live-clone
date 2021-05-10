@@ -12,23 +12,10 @@ const year = now.getFullYear();
 const month = now.getMonth() + 1;
 let day = now.getDate();
 
-let count = true;
-
 // 10시가 되면 날짜 업데이트
 
-if (count) {
-  if (hour === 0) {
-    day = day - 1;
-    count = false;
-  } else if (hour === 10) {
-    count = true;
-  } else {
-    count = false;
-  }
-} else if (hour === 10) {
-  count = true;
-} else {
-  count = false;
+if (hour < 10) {
+  day = day - 1;
 }
 
 const toDay = `${year}${month < 10 ? `0${month}` : `${month}`}${day < 10 ? `0${day}` : `${day}`}`;
@@ -280,6 +267,49 @@ router.get('/totalWorldCoronaInfo', (req, res) => {
       };
 
       return res.json({ success: true, body: totalWorldCoronaInfo });
+    },
+  );
+});
+
+router.get('/disasterCharactersList', (req, res) => {
+  request(
+    {
+      url:
+        `${configUrl.disasterCharactersUrl}` +
+        BaseQueryParams +
+        '&' +
+        encodeURIComponent('startCreateDt') +
+        '=' +
+        encodeURIComponent(`${toDay}`) +
+        BaseQueryParams +
+        '&' +
+        encodeURIComponent('type') +
+        '=' +
+        encodeURIComponent('xml'),
+      method: 'GET',
+    },
+    function (error, response, body) {
+      if (error) {
+        return res.json({ success: false, error });
+      }
+      const arr = [];
+
+      let result = body;
+      let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
+
+      const list = JSON.parse(xmlToJson).DisasterMsg.row;
+
+      list.map((item) => {
+        const disasterCharactersList = {
+          create_date: item.create_date._text,
+          location_name: item.location_name._text,
+          msg: item.msg._text,
+        };
+
+        arr.push(disasterCharactersList);
+      });
+
+      return res.json({ success: true, body: arr });
     },
   );
 });

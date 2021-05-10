@@ -20,4 +20,8 @@ export default {
   SET_TOTAL_WORLD_CORONA_INFO(state, data) {
     state.totalWorldCoronaInfo = data;
   },
+  SET_DISASTER_CHARACTERS_LIST(state, data) {
+    console.log('mutations', data);
+    state.disasterCharacters = data;
+  },
 };
