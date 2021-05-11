@@ -11,7 +11,7 @@ import {
 import {
   SET_CITY_CORONA_LIST,
   SET_TOTAL_CORONA_INFO,
-  SET_WORLD_CORONA_LSIT,
+  SET_WORLD_CORONA_LIST,
   SET_TOTAL_VACCINATION_INFO,
   SET_A_WEEK_AGO_CORONA_INFO,
   SET_KOREA_INC_DEC_CORONA_INFO,
@@ -37,7 +37,7 @@ export default {
   GET_WORLD_CORONA_LIST({ commit }) {
     getWorldCoronaList()
       .then(({ data }) => {
-        commit(SET_WORLD_CORONA_LSIT, data.body);
+        commit(SET_WORLD_CORONA_LIST, data.body);
       })
       .catch(err => console.log(err));
   },

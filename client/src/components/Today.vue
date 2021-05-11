@@ -19,11 +19,26 @@
         <div>vs 1달전 ㅇㅇ</div>
       </div>
     </div>
+    <h1></h1>
   </div>
 </template>
 
 <script>
-export default {};
+// import { mapState } from 'vuex';
+
+export default {
+  // created() {
+  //   if (this.$store.state.disasterCharactersList.length === 0) {
+  //     this.$store.dispatch('GET_DISASTER_CHARACTERS_LIST');
+  //   }
+  // },
+  // computed: {
+  //   ...mapState(['disasterCharactersList']),
+  //   fetchData() {
+  //     return this.disasterCharactersList.length === [] ? '데이터 불러 오는 중' : this.disasterCharactersList;
+  //   },
+  // },
+};
 </script>
 
 <style scoped>

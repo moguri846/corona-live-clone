@@ -33,7 +33,7 @@ const getKoreaIncDecCoronaInfo = () => {
 const getTotalWorldCoronaInfo = () => {
   return axios.get('/api/corona/totalWorldCoronaInfo');
 };
-
+// 재난 문자
 const getDisasterCharactersList = () => {
   return axios.get('/api/corona/disasterCharactersList');
 };

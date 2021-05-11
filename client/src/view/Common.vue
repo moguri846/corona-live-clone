@@ -1,7 +1,7 @@
 <template>
-  <div class="wrap">
+  <div class="container">
     <NavBar></NavBar>
-    <div class="container">
+    <div>
       <HeaderMenu></HeaderMenu>
       <slot name="header"></slot>
       <slot name="content"></slot>
@@ -27,13 +27,14 @@ export default {
 </script>
 
 <style scoped>
-.wrap {
+.container {
   width: 100%;
   max-width: 840px;
+
   display: flex;
   margin-top: 40px;
 }
-.container {
+.container > div:nth-child(2) {
   width: 100%;
   max-width: 510px;
   margin: 0 auto;
@@ -59,7 +60,7 @@ export default {
 }
 /* 모바일 */
 @media screen and (max-width: 480px) {
-  .wrap {
+  .container {
     margin: 0px;
   }
 }

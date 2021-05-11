@@ -103,7 +103,13 @@ export default {
     };
   },
   computed: {
-    ...mapState(['cityCoronaList', 'totalCoronaInfo', 'aWeekAgoCoronaInfo', 'koreaIncDecCoronaInfo']),
+    ...mapState([
+      'cityCoronaList',
+      'totalCoronaInfo',
+      'aWeekAgoCoronaInfo',
+      'koreaIncDecCoronaInfo',
+      // 'disasterCharactersList',
+    ]),
   },
   methods: {
     startSpinner(type) {
