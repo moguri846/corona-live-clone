@@ -34,7 +34,7 @@ router.get('/cityCoronaList', (req, res) => {
         '&' +
         encodeURIComponent('startCreateDt') +
         '=' +
-        encodeURIComponent(`${toDay}`),
+        encodeURIComponent(`${toDay - 1}`),
       method: 'GET',
     },
     function (error, response, body) {
@@ -46,22 +46,37 @@ router.get('/cityCoronaList', (req, res) => {
       let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
 
       const arr = [];
+      const toDay = [];
+      const yesterDay = [];
+
       const list = JSON.parse(xmlToJson).response.body.items.item;
 
-      list.map((item) => {
-        if (item.gubun._text !== '합계') {
+      // 어제, 오늘 데이터 나누기
+
+      for (let i = 0; i < list.length; i++) {
+        if (i <= 18) {
+          toDay.push(list[i]);
+        } else {
+          yesterDay.push(list[i]);
+        }
+      }
+
+      for (let i = 0; i < toDay.length; i++) {
+        if (toDay[i].gubun._text !== '합계' && yesterDay[i].gubun._text !== '합계') {
           const cityCoronaInfo = {
-            gubun: item.gubun._text,
-            gubun_en: item.gubunEn._text,
-            defCnt: item.defCnt._text,
-            incDec: item.incDec._text,
-            deathCnt: item.deathCnt._text,
-            isolClearCnt: item.isolClearCnt._text,
-            qurRate: item.qurRate._text,
+            gubun: toDay[i].gubun._text,
+            gubun_en: toDay[i].gubunEn._text,
+            defCnt: toDay[i].defCnt._text,
+            incDec: toDay[i].incDec._text,
+            incDeath: Math.abs(toDay[i].deathCnt._text - yesterDay[i].deathCnt._text),
+            incIsolClear: Math.abs(toDay[i].isolClearCnt._text - yesterDay[i].isolClearCnt._text),
+            deathCnt: toDay[i].deathCnt._text,
+            isolClearCnt: toDay[i].isolClearCnt._text,
+            qurRate: toDay[i].qurRate._text,
           };
           arr.push(cityCoronaInfo);
         }
-      });
+      }
 
       // 전일 대비 확진자 수 기준 내림차순으로 정렬
       arr.sort((a, b) => {

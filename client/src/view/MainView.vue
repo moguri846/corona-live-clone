@@ -49,10 +49,24 @@
               <div>ㅇ명</div>
               <div>
                 {{ item.defCnt | makeComma }}명
-                <span> {{ item.incDec | makeComma }}<i class="fas fa-arrow-up"></i></span>
+                <!-- 수정해야 함 -->
+                <span class="incDec" v-if="item.incDec > 0">
+                  {{ item.incDec | makeComma }}<i class="fas fa-arrow-up"></i
+                ></span>
               </div>
-              <div>{{ item.deathCnt | makeComma }}명</div>
-              <div>{{ item.isolClearCnt | makeComma }}명</div>
+              <div>
+                {{ item.deathCnt | makeComma }}명
+                <span class="incDeath" v-if="item.incDeath > 0"
+                  >{{ item.incDeath | makeComma }}<i class="fas fa-arrow-up"></i
+                ></span>
+              </div>
+              <div>
+                {{ item.isolClearCnt | makeComma }}명
+                <span class="incIsolClear" v-if="item.incIsolClear > 0"
+                  >{{ item.incIsolClear | makeComma }}<i class="fas fa-arrow-up"></i
+                ></span>
+                <!-- 수정해야 함 -->
+              </div>
               <div>{{ item.qurRate }}명</div>
               <div><i class="fas fa-chevron-right"></i></div>
             </li>
@@ -103,13 +117,7 @@ export default {
     };
   },
   computed: {
-    ...mapState([
-      'cityCoronaList',
-      'totalCoronaInfo',
-      'aWeekAgoCoronaInfo',
-      'koreaIncDecCoronaInfo',
-      // 'disasterCharactersList',
-    ]),
+    ...mapState(['cityCoronaList', 'totalCoronaInfo', 'aWeekAgoCoronaInfo', 'koreaIncDecCoronaInfo']),
   },
   methods: {
     startSpinner(type) {
@@ -229,13 +237,22 @@ export default {
   position: sticky;
   left: 0px;
 }
-.item > div:nth-child(3) span {
+/* incDec incDeath incIsolClear */
+.item > div > span {
   margin-left: 10px;
-  color: var(--list-span-text-color);
-  background-color: var(--list-span-color);
   border-radius: 12px;
   padding: 2.5px 5px;
   font-size: 13px;
+  font-weight: bold;
+}
+.item > div > .incDec,
+.item > div > .incDeath {
+  color: var(--list-span-text-color);
+  background-color: var(--list-span-bg-color);
+}
+.item > div > .incIsolClear {
+  color: var(--list-span-incIsolClear-color);
+  background-color: var(--list-span-incIsolClear-bg-color);
 }
 .item > div {
   width: 80px;
@@ -247,10 +264,13 @@ export default {
   margin-right: 5px;
   text-align: center;
 }
+.item > div:nth-child(4) {
+  width: 150px;
+}
 .item > div:nth-child(3),
 .item > div:nth-child(5),
 .item > div:nth-child(6) {
-  width: 150px;
+  width: 200px;
 }
 .item:nth-child(odd) > div {
   background-color: #272b38;
