@@ -38,8 +38,10 @@ html {
   /* corona item list */
   --list-odd-color: #272b38;
   --list-even-color: #191f2c;
-  --list-span-color: #352e3d;
+  --list-span-bg-color: #352e3d;
   --list-span-text-color: #af4661;
+  --list-span-incIsolClear-bg-color: #263536;
+  --list-span-incIsolClear-color: #1a7d1d;
 
   /* social distancing view */
   --social-span-color: #1e253b;
@@ -73,8 +75,10 @@ html.light {
   /* corona item list */
   --list-odd-color: #f5f5f5;
   --list-even-color: white;
-  --list-span-color: #f4e3e7;
+  --list-span-bg-color: #f4e3e7;
   --list-span-text-color: #ec718c;
+  --list-span-incIsolClear-bg-color: #d5e9d5;
+  --list-span-incIsolClear-color: #409e40;
 
   /* social distancing view */
   --social-span-color: #eff2ff;
