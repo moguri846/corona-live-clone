@@ -36,12 +36,12 @@
       <CoronaItemList :loading="cityCoronaListLoading">
         <div slot="item-list" class="item-list">
           <div class="description">
-            <div style="left: 30px">지역</div>
-            <div style="left: 69px">오늘 확진자</div>
-            <div style="left: 130px">총 확진자</div>
-            <div style="left: 196px">총 사망자</div>
-            <div style="left: 263px">총 완치자</div>
-            <div style="left: 350px">10만명당 확진자</div>
+            <div style="left: 22px">지역</div>
+            <div style="left: 46px">오늘 확진자</div>
+            <div style="left: 100px">총 확진자</div>
+            <div style="left: 189px">총 사망자</div>
+            <div style="left: 270px">총 완치자</div>
+            <div style="left: 360px">10만명당 확진자</div>
           </div>
           <ul>
             <li v-for="(item, index) in cityCoronaList" :key="index" class="item">
@@ -50,19 +50,19 @@
               <div>
                 {{ item.defCnt | makeComma }}명
                 <!-- 수정해야 함 -->
-                <span class="incDec" v-if="item.incDec > 0">
+                <span class="incDec" v-show="item.incDec > 0">
                   {{ item.incDec | makeComma }}<i class="fas fa-arrow-up"></i
                 ></span>
               </div>
               <div>
                 {{ item.deathCnt | makeComma }}명
-                <span class="incDeath" v-if="item.incDeath > 0"
+                <span class="incDeath" v-show="item.incDeath > 0"
                   >{{ item.incDeath | makeComma }}<i class="fas fa-arrow-up"></i
                 ></span>
               </div>
               <div>
                 {{ item.isolClearCnt | makeComma }}명
-                <span class="incIsolClear" v-if="item.incIsolClear > 0"
+                <span class="incIsolClear" v-show="item.incIsolClear > 0"
                   >{{ item.incIsolClear | makeComma }}<i class="fas fa-arrow-up"></i
                 ></span>
                 <!-- 수정해야 함 -->

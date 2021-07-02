@@ -21,54 +21,62 @@ import {
 
 export default {
   GET_CITY_CORONA_LIST({ commit }) {
-    getCityCoronaList()
+    return getCityCoronaList()
       .then(({ data }) => {
         commit(SET_CITY_CORONA_LIST, data.body);
+        return data;
       })
       .catch(err => console.log(err));
   },
   GET_TOTAL_CORONA_INFO({ commit }) {
-    getTotalCoronaInfo()
+    return getTotalCoronaInfo()
       .then(({ data }) => {
         commit(SET_TOTAL_CORONA_INFO, data.body);
+        return data;
       })
       .catch(err => console.log(err));
   },
   GET_WORLD_CORONA_LIST({ commit }) {
-    getWorldCoronaList()
+    return getWorldCoronaList()
       .then(({ data }) => {
         commit(SET_WORLD_CORONA_LIST, data.body);
+        return data;
       })
       .catch(err => console.log(err));
   },
   GET_TOTAL_VACCINATION_INFO({ commit }) {
-    getTotalVaccinationInfo()
+    return getTotalVaccinationInfo()
       .then(({ data }) => {
         commit(SET_TOTAL_VACCINATION_INFO, data.body);
+        return data;
       })
       .catch(err => console.log(err));
   },
   GET_A_WEEK_AGO_CORONA_INFO({ commit }) {
-    getAWeekAgoCoronaInfo()
+    return getAWeekAgoCoronaInfo()
       .then(({ data }) => {
         commit(SET_A_WEEK_AGO_CORONA_INFO, data.body);
+        return data;
       })
       .catch(err => console.log(err));
   },
   GET_KOREA_INC_DEC_CORONA_INFO({ commit }) {
-    getKoreaIncDecCoronaInfo().then(({ data }) => {
+    return getKoreaIncDecCoronaInfo().then(({ data }) => {
       commit(SET_KOREA_INC_DEC_CORONA_INFO, data.body);
+      return data;
     });
   },
   GET_TOTAL_WORLD_CORONA_INFO({ commit }) {
-    getTotalWorldCoronaInfo().then(({ data }) => {
+    return getTotalWorldCoronaInfo().then(({ data }) => {
       commit(SET_TOTAL_WORLD_CORONA_INFO, data.body);
+      return data;
     });
   },
   GET_DISASTER_CHARACTERS_LIST({ commit }) {
-    getDisasterCharactersList().then(({ data }) => {
+    return getDisasterCharactersList().then(({ data }) => {
       console.log('actions', data.body);
       commit(SET_DISASTER_CHARACTERS_LIST, data.body);
+      return data;
     });
   },
 };

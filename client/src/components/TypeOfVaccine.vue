@@ -159,13 +159,14 @@ export default {
   },
   methods: {
     selectVaccineInfo(e) {
-      if (e.target.className === 'pfizer') {
+      const { className } = e.target;
+      if (className === 'pfizer') {
         this.selectNum = 1;
-      } else if (e.target.className === 'astra-zeneca') {
+      } else if (className === 'astra-zeneca') {
         this.selectNum = 2;
-      } else if (e.target.className === 'janssen') {
+      } else if (className === 'janssen') {
         this.selectNum = 3;
-      } else if (e.target.className === 'moderna') {
+      } else if (className === 'moderna') {
         this.selectNum = 4;
       }
     },

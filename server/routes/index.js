@@ -5,6 +5,7 @@ const convert = require('xml-js');
 const configKey = require('../config/key');
 const configUrl = require('../config/url');
 const axios = require('axios');
+const moment = require('moment');
 
 const now = new Date();
 let hour = now.getHours();
@@ -20,6 +21,10 @@ if (hour < 10) {
 
 const toDay = `${year}${month < 10 ? `0${month}` : `${month}`}${day < 10 ? `0${day}` : `${day}`}`;
 
+const timeFunc = (day) => {
+  return moment(toDay).subtract(day, 'days').format('YYYYMMDD');
+};
+
 let BaseQueryParams = '?' + encodeURIComponent('ServiceKey') + `=${configKey.key}`; /* Service Key*/
 BaseQueryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
 BaseQueryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
@@ -34,7 +39,7 @@ router.get('/cityCoronaList', (req, res) => {
         '&' +
         encodeURIComponent('startCreateDt') +
         '=' +
-        encodeURIComponent(`${toDay - 1}`),
+        encodeURIComponent(`${timeFunc(1)}`),
       method: 'GET',
     },
     function (error, response, body) {
@@ -195,7 +200,7 @@ router.get('/WeekAgoCoronaInfo', (req, res) => {
         '&' +
         encodeURIComponent('startCreateDt') +
         '=' +
-        encodeURIComponent(`${toDay - 7}`),
+        encodeURIComponent(`${timeFunc(7)}`),
       method: 'GET',
     },
     function (error, response, body) {
@@ -233,7 +238,7 @@ router.get('/koreaIncDecCoronaInfo', (req, res) => {
         '&' +
         encodeURIComponent('startCreateDt') +
         '=' +
-        encodeURIComponent(`${toDay - 1}`),
+        encodeURIComponent(`${timeFunc(1)}`),
       method: 'GET',
     },
     function (error, response, body) {
