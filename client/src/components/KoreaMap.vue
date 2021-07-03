@@ -4,7 +4,7 @@
       <ClipSpinner></ClipSpinner>
     </template>
     <template v-else>
-      <img src="../img/1619245025827.png" />
+      <img src="../img/1625284996647.png" />
       <div class="gubun-list">
         <div v-for="(item, index) in cityCoronaList" :key="index" class="gubun" :class="item.gubun_en">
           <div>{{ item.gubun }}</div>
