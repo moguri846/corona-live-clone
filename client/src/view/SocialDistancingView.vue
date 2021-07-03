@@ -4,7 +4,7 @@
       <HeaderTitle>
         <div slot="title" class="title">
           <h3>거리두기 발표</h3>
-          <h1>2021년 07월 07일<span>D-4</span></h1>
+          <h1>2021년 04월 11일<span>D-8</span></h1>
         </div>
       </HeaderTitle>
     </div>

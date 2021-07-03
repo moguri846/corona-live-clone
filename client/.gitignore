@@ -2,7 +2,7 @@
 node_modules
 /dist
 
-img
+
 
 # local env files
 .env.local
