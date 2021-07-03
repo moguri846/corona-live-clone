@@ -1,24 +1,21 @@
-# vue-corona
+# 코로나 라이브 클론 코딩
 
-## Project setup
-```
-npm install
-```
+# Front-end
+>   1. Vue2
+>   2. Vuex
+>   3. Vue-router
+>   4. Vue-spinner
+>   5. axios
+>   6. chart.js
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+# Back-end
+>   1. Node.js
+>   2. Express.js
 
-### Compiles and minifies for production
-```
-npm run build
-```
+![Alt text](/gif/introduce.gif)
 
-### Lints and fixes files
-```
-npm run lint
-```
+## 반응형
+![Alt text](/gif/responsive-web.gif)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 라이트 모드
+![Alt text](/gif/light-mode.gif)
