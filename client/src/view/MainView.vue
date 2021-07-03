@@ -27,7 +27,9 @@
     </div>
     <div slot="content" class="content">
       <template v-if="aWeekAgoCoronaInfoLoading">
-        <ClipSpinner></ClipSpinner>
+        <div class="bar-chart">
+          <ClipSpinner></ClipSpinner>
+        </div>
       </template>
       <template v-else>
         <BarChart :chartData="aWeekAgoCoronaInfo" class="bar-chart"></BarChart>
@@ -190,6 +192,7 @@ export default {
   border: 1px solid var(--border-color);
   border-radius: 12px;
   margin-bottom: 20px;
+  padding: 10px;
   background-color: var(--div-color);
 }
 .total > div > div:nth-child(3) {
@@ -316,6 +319,14 @@ i {
   .bar-chart {
     border: 1px solid var(--mobile-border-color);
     border-radius: 0px;
+  }
+}
+@media screen and (max-width: 310px) {
+  .total > div > div:nth-of-type(1) {
+    font-size: 16px;
+  }
+  .total > div > div:nth-of-type(2) {
+    font-size: 15px;
   }
 }
 </style>

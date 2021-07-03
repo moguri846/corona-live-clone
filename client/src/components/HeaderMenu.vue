@@ -63,4 +63,9 @@ a {
     border-radius: 0px;
   }
 }
+@media screen and (max-width: 300px) {
+  .header-menu-title {
+    font-size: 15px;
+  }
+}
 </style>

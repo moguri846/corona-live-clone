@@ -131,4 +131,9 @@ h3 {
     padding-left: 12px;
   }
 }
+@media screen and (max-width: 310px) {
+  .total {
+    padding-left: 8px;
+  }
+}
 </style>
